@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    $user = \App\Models\User::find(1);
+
+    $role = \App\Models\Role::find(1);
+
+    dd($role->users);
+
     return view('welcome');
 });
 
