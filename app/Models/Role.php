@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Enums\RoleLevel;
+use App\Enums\RoleLevelEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -28,7 +28,7 @@ class Role extends Model
      * @var string[]
      */
     public $casts = [
-        'level' => RoleLevel::class
+        'level' => RoleLevelEnum::class
     ];
 
     public function users(): \Illuminate\Database\Eloquent\Relations\HasMany

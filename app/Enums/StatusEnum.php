@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum UserStatus : int
+enum StatusEnum : int
 {
     case PASSIVE = 0;
     case ACTIVE = 1;
@@ -10,11 +10,11 @@ enum UserStatus : int
     /**
      * @return string
      */
-    public function title(): string
+    public function label(): string
     {
         return match ($this) {
-            self::ACTIVE => 'Aktif',
-            default => 'Pasif'
+            self::ACTIVE  => 'Aktif',
+            self::PASSIVE => 'Pasif'
         };
     }
 }

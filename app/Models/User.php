@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Enums\UserStatus;
+use App\Enums\NationalityEnum;
+use App\Enums\StatusEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -20,13 +20,16 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
+        'first_name',
+        'last_name',
         'username',
+        'email',
+        'email_verified_at',
         'password',
         'status',
-        'web',
-        'role_id'
+        'login',
+        'role_id',
+        'image_id',
     ];
 
     /**
@@ -46,12 +49,23 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'status' => UserStatus::class,
-        'web' => UserStatus::class,
+        'status' => StatusEnum::class,
+        'web' => StatusEnum::class,
+        'nationality' => NationalityEnum::class,
     ];
 
     public function role(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Role::class);
+    }
+
+    public function image(): \Illuminate\Database\Eloquent\Relations\belongsTo
+    {
+        return $this->belongsTo(Image::class);
+    }
+
+    public function metas(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(UserMeta::class);
     }
 }

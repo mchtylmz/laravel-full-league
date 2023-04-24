@@ -16,9 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $user = \App\Models\User::find(1);
 
-    $role = \App\Models\Role::find(1);
+    $roles = \App\Models\Role::where('level', \App\Enums\RoleLevelEnum::REFEREE_OBSERVER)->get();
 
-    dd($role->users);
+    $type = 5;
+
+    //dd(\App\Enums\RoleLevelEnum::tryFrom($type));
+    //dd(\App\Enums\RoleLevelEnum::cases());
+    //dd($roles);
+    //dd($user->metas()->get());
+    dd($user->image()->first());
 
     return view('welcome');
 });
