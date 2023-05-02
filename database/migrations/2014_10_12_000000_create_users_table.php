@@ -20,7 +20,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->integer('status')->default(1);
-            $table->integer('login')->default(1);
+            $table->integer('login')->default(0);
             $table->integer('nationality')->default(0);
             $table->integer('role_id')->default(0);
             $table->integer('image_id')->default(0);
@@ -28,7 +28,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->index(['role_id', 'image_id']);
+            $table->index(['role_id', 'image_id', 'status', 'login']);
         });
     }
 

@@ -31,4 +31,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/user/{user:username}', [App\Http\Controllers\HomeController::class, 'user'])->name('user');
+//Route::get('/user/{user}', [App\Http\Controllers\HomeController::class, 'user'])->name('user');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
