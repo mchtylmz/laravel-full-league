@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bb97c7603f96173e31b427789f24fb98",
+    "content-hash": "e9b974722f47784db1e24f2275dbc474",
     "packages": [
         {
             "name": "brick/math",
@@ -1766,6 +1766,58 @@
                 }
             ],
             "time": "2022-04-17T13:12:02+00:00"
+        },
+        {
+            "name": "mchtylmz/haruncpi-laravel-user-activity-laravel10",
+            "version": "v1.0.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mchtylmz/laravel-user-activity-laravel10.git",
+                "reference": "d2c8d35875a62ac1348f1156b10c273f007a7e66"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mchtylmz/laravel-user-activity-laravel10/zipball/d2c8d35875a62ac1348f1156b10c273f007a7e66",
+                "reference": "d2c8d35875a62ac1348f1156b10c273f007a7e66",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Haruncpi\\LaravelUserActivity\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Haruncpi\\LaravelUserActivity\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "cc-by-4.0"
+            ],
+            "authors": [
+                {
+                    "name": "MD.HARUN-UR-RASHID",
+                    "email": "harun.cox@gmail.com"
+                }
+            ],
+            "description": "Monitor user activity easily!",
+            "keywords": [
+                "activity",
+                "haruncpi",
+                "laravel",
+                "user"
+            ],
+            "support": {
+                "source": "https://github.com/mchtylmz/laravel-user-activity-laravel10/tree/v1.0.4.2"
+            },
+            "time": "2023-05-03T10:27:26+00:00"
         },
         {
             "name": "monolog/monolog",

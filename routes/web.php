@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,7 +25,7 @@ Route::get('/', function () {
     //dd(\App\Enums\RoleLevelEnum::cases());
     //dd($roles);
     //dd($user->metas()->get());
-    dd($user->image()->first());
+    //dd($user->image()->first());
 
     return view('welcome');
 });

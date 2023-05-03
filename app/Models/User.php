@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\NationalityEnum;
 use App\Enums\StatusEnum;
+use Haruncpi\LaravelUserActivity\Traits\Loggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -12,7 +13,7 @@ use Pharaonic\Laravel\Settings\Traits\Settingable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, Settingable;
+    use HasApiTokens, HasFactory, Notifiable, Settingable, Loggable;
 
     /**
      * The attributes that are mass assignable.

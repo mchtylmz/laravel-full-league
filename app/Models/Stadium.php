@@ -4,12 +4,14 @@ namespace App\Models;
 
 use App\Enums\RegionEnum;
 use App\Enums\StatusEnum;
+use Haruncpi\LaravelUserActivity\Traits\Loggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Pharaonic\Laravel\Settings\Traits\Settingable;
 
 class Stadium extends Model
 {
-    use HasFactory;
+    use HasFactory, Settingable, Loggable;
 
     public $fillable = [
         'name',

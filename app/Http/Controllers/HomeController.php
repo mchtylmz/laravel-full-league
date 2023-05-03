@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,6 +27,11 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
+
+        $post = Post::first();
+        $post->is_home = 1;
+        $post->save();
+
         // Way 1
         $user->settings->multilingual = true;
 

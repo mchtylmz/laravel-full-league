@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\RoleLevelEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Pharaonic\Laravel\Settings\Traits\Settingable;
 
 
 /**
@@ -12,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Role extends Model
 {
-    use HasFactory;
+    use HasFactory, Settingable;
 
 
     /**
