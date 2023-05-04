@@ -20,10 +20,11 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->longText('content');
             $table->integer('status')->default(0);
-            $table->integer('is_home')->default(1);
+            $table->integer('featured')->default(1);
             $table->unsignedBigInteger('viewed')->default(0);
             $table->string('source')->nullable();
-            $table->integer('image_id')->default(0);
+            $table->string('type')->default('post');
+            //$table->integer('image_id')->default(0);
             $table->integer('sort')->default(1);
             $table->timestamp('started_at')->useCurrent();
             $table->timestamp('ended_at')->nullable();
@@ -31,7 +32,7 @@ return new class extends Migration
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('CASCADE');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
-            $table->index(['user_id', 'category_id', 'image_id', 'is_home', 'status']);
+            $table->index(['user_id', 'category_id', 'featured', 'status']);
         });
     }
 

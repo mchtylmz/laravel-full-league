@@ -23,12 +23,12 @@ return new class extends Migration
             $table->integer('login')->default(0);
             $table->integer('nationality')->default(0);
             $table->integer('role_id')->default(0);
-            $table->integer('image_id')->default(0);
+            //$table->integer('image_id')->default(0);
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
 
-            $table->index(['role_id', 'image_id', 'status', 'login']);
+            $table->index(['role_id', 'status', 'login']);
         });
     }
 

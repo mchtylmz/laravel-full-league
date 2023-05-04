@@ -9,11 +9,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Pharaonic\Laravel\Images\HasImages;
 use Pharaonic\Laravel\Settings\Traits\Settingable;
 
+/**
+ *
+ */
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, Settingable, Loggable;
+    use HasApiTokens, HasFactory, Notifiable, Settingable, Loggable, HasImages;
 
     /**
      * The attributes that are mass assignable.
@@ -30,7 +34,6 @@ class User extends Authenticatable
         'status',
         'login',
         'role_id',
-        'image_id',
     ];
 
     /**
@@ -55,16 +58,32 @@ class User extends Authenticatable
         'nationality' => NationalityEnum::class,
     ];
 
+
+    /**
+     * @var array[]
+     */
+    protected $filesOptions = [
+        'images' => [
+            'directory' => '/user',
+            'thumbnail' => [
+                'ratio'  => false,
+                'width'  => 500,
+                'height' => 500
+            ]
+        ],
+    ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function role(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Role::class);
     }
 
-    public function image(): \Illuminate\Database\Eloquent\Relations\belongsTo
-    {
-        return $this->belongsTo(Image::class);
-    }
-
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function metas(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(UserMeta::class);

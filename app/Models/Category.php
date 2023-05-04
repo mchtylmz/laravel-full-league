@@ -6,29 +6,51 @@ use App\Enums\StatusEnum;
 use Haruncpi\LaravelUserActivity\Traits\Loggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Pharaonic\Laravel\Images\HasImages;
 
+/**
+ *
+ */
 class Category extends Model
 {
-    use HasFactory, Loggable;
+    use HasFactory, Loggable, HasImages;
 
+    /**
+     * @var string[]
+     */
     public $fillable = [
-        'image_id',
         'name',
         'slug',
         'description'
     ];
 
+    /**
+     * @var string[]
+     */
     public $casts = [
         'status' => StatusEnum::class
     ];
 
+
+    /**
+     * @var array[]
+     */
+    protected $filesOptions = [
+        'images' => [
+            'directory' => '/category',
+            'thumbnail' => [
+                'ratio'  => true,
+                'width'  => 500,
+                'height' => 500
+            ]
+        ],
+    ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function posts(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Post::class);
-    }
-
-    public function image(): \Illuminate\Database\Eloquent\Relations\belongsTo
-    {
-        return $this->belongsTo(Image::class);
     }
 }

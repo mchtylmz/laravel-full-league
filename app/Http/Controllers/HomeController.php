@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUserRequest;
 use App\Models\Post;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -29,7 +29,7 @@ class HomeController extends Controller
         $user = Auth::user();
 
         $post = Post::first();
-        $post->is_home = 1;
+        $post->featured = 1;
         $post->save();
 
         // Way 1
@@ -49,11 +49,41 @@ class HomeController extends Controller
 
         debug('deneme');
 
-        return view('home');
+        $posts = Post::type('post')->get();
+        $pages = Post::type('page')->get();
+
+        return view('home', [
+            'posts' => $posts,
+            'pages' => $pages,
+        ]);
     }
 
     public function user(User $user)
     {
         dd($user->email);
+    }
+
+    public function index1()
+    {
+        //auth()->user()->clearImages();
+        return view('index1', [
+            'images' => auth()->user()->images
+        ]);
+    }
+
+    public function index2(StoreUserRequest $request)
+    {
+        $user = Auth::user();
+
+        $validated = $request->validated();
+
+        $user->addImage($request->file);
+
+        $user->email = $request->email;
+        $user->save();
+
+        return view('index1', [
+            'images' => $user->images
+        ]);
     }
 }

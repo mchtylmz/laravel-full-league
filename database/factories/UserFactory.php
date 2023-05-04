@@ -28,7 +28,6 @@ class UserFactory extends Factory
             'password' => Hash::make('123456'), // 123456
             'status' => Arr::random([0,1]),
             'role_id' => Arr::random([1,3]),
-            'image_id' => Arr::random([1,5]),
             'remember_token' => Str::random(10),
         ];
     }

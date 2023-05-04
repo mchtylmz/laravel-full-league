@@ -36,3 +36,5 @@ Route::get('/user/{user:username}', [App\Http\Controllers\HomeController::class,
 //Route::get('/user/{user}', [App\Http\Controllers\HomeController::class, 'user'])->name('user');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home1', [App\Http\Controllers\HomeController::class, 'index1'])->name('home1');
+Route::post('/home2', [App\Http\Controllers\HomeController::class, 'index2'])->name('home2');

@@ -19,5 +19,31 @@
             </div>
         </div>
     </div>
+
+
+<h2>POST</h2>
+    <div class="row">
+        @foreach($posts as $post)
+            <div class="col-lg-3">
+                {{ $post->title }}
+                <br>
+                {{ $post->type->label() }}
+            </div>
+        @endforeach
+    </div>
+
+    <hr>
+
+    <h2>PAGE</h2>
+    <div class="row">
+        @foreach($pages as $page)
+            <div class="col-lg-3">
+                {{ $page->title }}
+                <br>
+                {{ $page->type->label() }}
+            </div>
+        @endforeach
+    </div>
+
 </div>
 @endsection

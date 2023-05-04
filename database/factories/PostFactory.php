@@ -25,10 +25,9 @@ class PostFactory extends Factory
             'description' => fake()->sentence(20),
             'content' => fake()->text,
             'status' => 1,
-            'is_home' => Arr::random([0, 1]),
+            'featured' => Arr::random([0, 1]),
             'viewed' => 0,
             'source' => 'fake',
-            'image_id' => Arr::random([1, 3]),
             'started_at' => date('Y-m-d H:i:s')
         ];
     }
