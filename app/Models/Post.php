@@ -60,10 +60,10 @@ class Post extends Model
 
     /**
      * @param $query
-     * @param $value
+     * @param string $value
      * @return mixed
      */
-    public function scopeType($query, $value = 'post'): mixed
+    public function scopeType($query, string $value = 'post'): mixed
     {
         return $query->where('type', $value);
     }

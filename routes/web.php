@@ -1,7 +1,12 @@
 <?php
 
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\HomeController;
+
+use App\Http\Controllers\Admin\AdminHomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,27 +19,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $user = \App\Models\User::find(1);
+Route::get('/', [HomeController::class, 'index'])->name('index');
 
-    $roles = \App\Models\Role::where('level', \App\Enums\RoleLevelEnum::REFEREE_OBSERVER)->get();
+Auth::routes(['register' => false]);
 
-    $type = 5;
 
-    //dd(\App\Enums\RoleLevelEnum::tryFrom($type));
-    //dd(\App\Enums\RoleLevelEnum::cases());
-    //dd($roles);
-    //dd($user->metas()->get());
-    //dd($user->image()->first());
+Route::middleware(['auth'])->group(function () {
+    // admin
+    Route::prefix(env('APP_ADMIN_PREFIX'))->name('admin.')->group(function () {
+        Route::get('/', [AdminHomeController::class, 'index'])->name('index');
+    });
 
-    return view('welcome');
+    // profile
+
 });
-
-Auth::routes();
-
-Route::get('/user/{user:username}', [App\Http\Controllers\HomeController::class, 'user'])->name('user');
-//Route::get('/user/{user}', [App\Http\Controllers\HomeController::class, 'user'])->name('user');
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/home1', [App\Http\Controllers\HomeController::class, 'index1'])->name('home1');
-Route::post('/home2', [App\Http\Controllers\HomeController::class, 'index2'])->name('home2');

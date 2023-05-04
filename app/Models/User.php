@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\NationalityEnum;
 use App\Enums\StatusEnum;
+use App\Enums\UserTypeEnum;
 use Haruncpi\LaravelUserActivity\Traits\Loggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -34,6 +35,7 @@ class User extends Authenticatable
         'status',
         'login',
         'role_id',
+        'type'
     ];
 
     /**
@@ -56,6 +58,7 @@ class User extends Authenticatable
         'status' => StatusEnum::class,
         'web' => StatusEnum::class,
         'nationality' => NationalityEnum::class,
+        'type' => UserTypeEnum::class
     ];
 
 

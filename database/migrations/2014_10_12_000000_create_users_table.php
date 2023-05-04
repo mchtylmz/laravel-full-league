@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('status')->default(1);
             $table->integer('login')->default(0);
             $table->integer('nationality')->default(0);
+            $table->string('type')->default('user');
             $table->integer('role_id')->default(0);
             //$table->integer('image_id')->default(0);
             $table->rememberToken();
