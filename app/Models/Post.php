@@ -8,10 +8,11 @@ use Haruncpi\LaravelUserActivity\Traits\Loggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Pharaonic\Laravel\Images\HasImages;
+use Zoha\Metable;
 
 class Post extends Model
 {
-    use HasFactory, Loggable, HasImages;
+    use HasFactory, Loggable, HasImages, Metable;
 
 
     /**
@@ -82,14 +83,6 @@ class Post extends Model
     public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Category::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function metas(): \Illuminate\Database\Eloquent\Relations\HasMany
-    {
-        return $this->hasMany(PostMeta::class);
     }
 
 }

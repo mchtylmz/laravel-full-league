@@ -7,13 +7,14 @@ use Haruncpi\LaravelUserActivity\Traits\Loggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Pharaonic\Laravel\Images\HasImages;
+use Zoha\Metable;
 
 /**
  *
  */
 class Category extends Model
 {
-    use HasFactory, Loggable, HasImages;
+    use HasFactory, Loggable, HasImages, Metable;
 
     /**
      * @var string[]

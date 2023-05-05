@@ -15,10 +15,16 @@ class AdminHomeController extends Controller
     public function index()
     {
 
-        auth()->user()->setMeta('deneme', 22);
+        auth()->user()->setMeta('deneme' , 'value');
 
-        dd(
-            User::meta('deneme', 222)->get()
+        $user = User::find(2);
+        $user->setMeta('deneme', 'value');
+
+        debug(
+            auth()->user()->getMetas(),
+            auth()->user()->hasMeta('deneme'),
+            User::whereMeta('deneme', 'value')->get(),
+            User::withMeta()->get()
         );
 
         return view('admin.index');

@@ -2,18 +2,20 @@
 
 namespace App\Models;
 
+use App\Enums\StatusEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Meta extends Model
+class Week extends Model
 {
     use HasFactory;
 
     public $fillable = [
-        'metable_type',
-        'metable_id',
-        'key',
-        'value',
-        'type'
+        'name',
+        'status'
+    ];
+
+    public $casts = [
+        'status' => StatusEnum::class
     ];
 }

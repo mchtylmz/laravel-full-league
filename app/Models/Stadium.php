@@ -7,11 +7,13 @@ use App\Enums\StatusEnum;
 use Haruncpi\LaravelUserActivity\Traits\Loggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Pharaonic\Laravel\Images\HasImages;
 use Pharaonic\Laravel\Settings\Traits\Settingable;
+use Zoha\Metable;
 
 class Stadium extends Model
 {
-    use HasFactory, Settingable, Loggable;
+    use HasFactory, Settingable, Loggable, HasImages, Metable;
 
     public $fillable = [
         'name',
