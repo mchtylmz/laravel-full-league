@@ -6,6 +6,7 @@ enum UserTypeEnum : string
 {
     case USER = 'user';
     case MEMBER = 'member';
+    case ADMIN = 'admin';
 
     /**
      * @return string
@@ -14,7 +15,8 @@ enum UserTypeEnum : string
     {
         return match ($this) {
             self::USER => 'Kişi',
-            self::MEMBER => 'Kullanıcı/Üye'
+            self::MEMBER => 'Kullanıcı/Üye',
+            self::ADMIN => 'Yönetici',
         };
     }
 }

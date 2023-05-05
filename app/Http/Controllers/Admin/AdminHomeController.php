@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminHomeController extends Controller
@@ -13,6 +14,13 @@ class AdminHomeController extends Controller
      */
     public function index()
     {
+
+        auth()->user()->setMeta('deneme', 22);
+
+        dd(
+            User::meta('deneme', 222)->get()
+        );
+
         return view('admin.index');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\NationalityEnum;
 use App\Enums\StatusEnum;
 use App\Enums\UserTypeEnum;
+use App\Traits\HasMetaTrait;
 use Haruncpi\LaravelUserActivity\Traits\Loggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -18,7 +19,7 @@ use Pharaonic\Laravel\Settings\Traits\Settingable;
  */
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, Settingable, Loggable, HasImages;
+    use HasApiTokens, HasFactory, Notifiable, Settingable, Loggable, HasImages, HasMetaTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -82,13 +83,5 @@ class User extends Authenticatable
     public function role(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Role::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function metas(): \Illuminate\Database\Eloquent\Relations\HasMany
-    {
-        return $this->hasMany(UserMeta::class);
     }
 }

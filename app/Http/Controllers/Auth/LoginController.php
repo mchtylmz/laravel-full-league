@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 /**
@@ -39,6 +40,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        $this->redirectTo = env('APP_ADMIN_PREFIX');
         $this->middleware('guest')->except('logout');
     }
 
@@ -66,27 +68,12 @@ class LoginController extends Controller
         );
     }
 
+
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
      */
     public function showLoginForm()
     {
-        // Way 1
-        settings()->status = false;
-
-// Way 2
-        settings()->set('off_message', 'Maintenance');
-
-// Way 3
-        settings()->set([
-            'status'        => true,
-            'off_message'   => 'Maintenance'
-        ]);
-
-// Save all settings
-        settings()->save();
-
-
         return view('auth.login');
     }
 }
