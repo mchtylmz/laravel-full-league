@@ -18,7 +18,8 @@ class Team extends Model
         'phone',
         'fax',
         'email',
-        'status'
+        'status',
+        'stadium_id'
     ];
 
     public $casts = [
