@@ -11,10 +11,21 @@ use Pharaonic\Laravel\Images\HasImages;
 use Pharaonic\Laravel\Settings\Traits\Settingable;
 use Zoha\Metable;
 
+/**
+ *
+ */
 class Stadium extends Model
 {
     use HasFactory, Settingable, Loggable, HasImages, Metable;
 
+    /**
+     * @var string
+     */
+    public $table = 'stadiums';
+
+    /**
+     * @var string[]
+     */
     public $fillable = [
         'name',
         'capacity',
@@ -25,6 +36,9 @@ class Stadium extends Model
         'lon',
     ];
 
+    /**
+     * @var string[]
+     */
     public $casts = [
         'status' => StatusEnum::class,
         'region' => RegionEnum::class,

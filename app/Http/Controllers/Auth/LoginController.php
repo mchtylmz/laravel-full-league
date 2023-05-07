@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Enums\StatusEnum;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -62,8 +63,8 @@ class LoginController extends Controller
         return array_merge(
             $request->only($this->username(), 'password'),
             array(
-                'status' => 1,
-                'login'  => 1
+                'status' => StatusEnum::ACTIVE,
+                'login'  => StatusEnum::ACTIVE
             )
         );
     }

@@ -2,7 +2,8 @@
 
 namespace App\Models;
 
-use App\Enums\RoleLevelEnum;
+use App\Enums\RoleCodeEnum;
+use Haruncpi\LaravelUserActivity\Traits\Loggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Pharaonic\Laravel\Settings\Traits\Settingable;
@@ -13,15 +14,14 @@ use Pharaonic\Laravel\Settings\Traits\Settingable;
  */
 class Role extends Model
 {
-    use HasFactory, Settingable;
-
+    use HasFactory, Settingable, Loggable;
 
     /**
      * @var string[]
      */
     protected $fillable = [
         'name',
-        'level'
+        'code'
     ];
 
 
@@ -29,7 +29,7 @@ class Role extends Model
      * @var string[]
      */
     public $casts = [
-        'level' => RoleLevelEnum::class
+        'code' => RoleCodeEnum::class
     ];
 
     public function users(): \Illuminate\Database\Eloquent\Relations\HasMany

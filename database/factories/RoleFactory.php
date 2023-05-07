@@ -11,7 +11,7 @@ class RoleFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'level' => Arr::random([1,3])
+            'code' => 0
         ];
     }
 }

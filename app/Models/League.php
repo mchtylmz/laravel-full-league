@@ -7,28 +7,26 @@ use Haruncpi\LaravelUserActivity\Traits\Loggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Pharaonic\Laravel\Images\HasImages;
+use Pharaonic\Laravel\Settings\Traits\Settingable;
 use Zoha\Metable;
 
-class Team extends Model
+class League extends Model
 {
-    use HasFactory, Metable, HasImages, Loggable;
+    use HasFactory, Metable, Settingable, Loggable, HasImages;
 
     public $fillable = [
+        'season_id',
         'name',
-        'address',
-        'phone',
-        'fax',
-        'email',
-        'status',
-        'stadium_id'
+        'group',
+        'status'
     ];
 
     public $casts = [
         'status' => StatusEnum::class
     ];
 
-    public function stadium()
+    public function season(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Stadium::class);
+        return $this->belongsTo(Season::class);
     }
 }

@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use App\Enums\NationalityEnum;
 use App\Enums\StatusEnum;
-use App\Enums\UserTypeEnum;
 use Haruncpi\LaravelUserActivity\Traits\Loggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -27,16 +25,13 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'first_name',
-        'last_name',
         'username',
         'email',
-        'email_verified_at',
         'password',
         'status',
         'login',
         'role_id',
-        'type'
+        'email_verified_at',
     ];
 
     /**
@@ -57,9 +52,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'status' => StatusEnum::class,
-        'web' => StatusEnum::class,
-        'nationality' => NationalityEnum::class,
-        'type' => UserTypeEnum::class
+        'web' => StatusEnum::class
     ];
 
 
@@ -80,8 +73,25 @@ class User extends Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function role(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function role(): \Illuminate\Database\Eloquent\Relations\belongsTo
     {
         return $this->belongsTo(Role::class);
+    }
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function people()
+    {
+        return $this->hasOne(People::class);
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameAttribute(): string
+    {
+        return sprintf('%s %s', $this->people?->first_name, $this->people?->last_name);
     }
 }

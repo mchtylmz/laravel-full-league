@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
+use App\Models\Team;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -15,18 +17,10 @@ class AdminHomeController extends Controller
     public function index()
     {
 
-        auth()->user()->setMeta('deneme' , 'value');
 
-        $user = User::find(2);
-        $user->setMeta('deneme', 'value');
-
-        debug(
-            auth()->user()->getMetas(),
-            auth()->user()->hasMeta('deneme'),
-            User::whereMeta('deneme', 'value')->get(),
-            User::withMeta()->get()
-        );
-
-        return view('admin.index');
+        return view('admin.index', [
+            'users' => User::get(),
+            'teams' => Team::all()
+        ]);
     }
 }

@@ -11,12 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('leagues', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('season_id');
             $table->string('name');
-            $table->text('description')->nullable();
-            $table->integer('code')->default(0);
+            $table->integer('group')->default(0);
+            $table->integer('status')->default(0);
             $table->timestamps();
+
+            $table->foreign('season_id')->references('id')->on('seasons')->onDelete('CASCADE');
+            $table->index(['season_id', 'status', 'group']);
         });
     }
 
@@ -25,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('leagues');
     }
 };

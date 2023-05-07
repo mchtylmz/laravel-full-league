@@ -24,7 +24,6 @@ return new class extends Migration
             $table->unsignedBigInteger('viewed')->default(0);
             $table->string('source')->nullable();
             $table->string('type')->default('post');
-            //$table->integer('image_id')->default(0);
             $table->integer('sort')->default(1);
             $table->timestamp('started_at')->useCurrent();
             $table->timestamp('ended_at')->nullable();

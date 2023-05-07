@@ -2,15 +2,17 @@
 
 namespace App\Models;
 
+use Haruncpi\LaravelUserActivity\Traits\Loggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Pharaonic\Laravel\Images\HasImages;
 
 /**
  *
  */
 class Player extends Model
 {
-    use HasFactory;
+    use HasFactory, Loggable, HasImages;
 
     /**
      * @var string[]
@@ -19,7 +21,8 @@ class Player extends Model
         'first_name',
         'last_name',
         'birthdate',
-        'team_id'
+        'team_id',
+        'country_id',
     ];
 
     /**

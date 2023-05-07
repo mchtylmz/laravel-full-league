@@ -17,15 +17,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Role::create(['name' => 'Superadmin', 'level' => 100]);
-        Role::create(['name' => 'Admin', 'level' => 90]);
-        Role::create(['name' => 'Gözlemci', 'level' => 80]);
-        Role::create(['name' => 'Hakem', 'level' => 70]);
-        Role::create(['name' => 'Üye', 'level' => 0]);
+        Role::create(['name' => 'Superadmin', 'code' => 100]);
+        Role::create(['name' => 'Admin', 'code' => 99]);
+        Role::create(['name' => 'Gözlemci', 'code' => 35]);
+        Role::create(['name' => 'Hakem', 'code' => 30]);
+        Role::create(['name' => 'Üye', 'code' => 10]);
 
         $admin = User::create([
-            'first_name' => 'Admin',
-            'last_name' => 'admin',
             'username' => 'admin',
             'email' => 'admin@example.com',
             'email_verified_at' => now(),
@@ -33,11 +31,13 @@ class DatabaseSeeder extends Seeder
             'status' => 1,
             'role_id' => 1,
             'login' => 1,
-            'nationality' => 2,
-            'type' => 'admin',
             'remember_token' => Str::random(10),
         ]);
-        //$admin->metas()->create(['name' => 'birthdate', 'value' => '1994-03-01']);
+        $admin->setMeta('birthdate', '1994-03-01');
+        $admin->people()->create([
+            'first_name' => 'Admin',
+            'last_name' => 'admin',
+        ]);
         \App\Models\User::factory(5)->create();
 
         Season::create([

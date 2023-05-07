@@ -19,8 +19,13 @@ return new class extends Migration
             $table->string('fax')->nullable();
             $table->string('email')->nullable();
             $table->integer('status')->default(0);
+            $table->unsignedBigInteger('people_id')->nullable();
             $table->unsignedBigInteger('stadium_id');
             $table->timestamps();
+
+            $table->foreign('stadium_id')->references('id')->on('stadiums');
+            $table->foreign('people_id')->references('id')->on('people');
+            $table->index(['stadium_id', 'status', 'people_id']);
         });
     }
 
