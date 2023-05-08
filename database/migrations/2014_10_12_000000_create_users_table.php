@@ -17,14 +17,13 @@ return new class extends Migration
             $table->string('email');
             $table->string('password');
             $table->integer('status')->default(1);
-            $table->integer('login')->default(0);
             $table->integer('role_id')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
 
-            $table->index(['role_id', 'status', 'login']);
+            $table->index(['role_id', 'status']);
         });
     }
 

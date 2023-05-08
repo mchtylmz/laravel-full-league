@@ -6,7 +6,7 @@
         {{ auth()->user()->name }}
         <hr>
         @foreach($users as $user)
-            {{ $user->first_name }} {{ $user->last_name }}
+            {{ $user->people?->first_name }} {{ $user->people?->last_name }}
             <br>
             {{ $user->role->name }} - {{ $user->role->code }}
 

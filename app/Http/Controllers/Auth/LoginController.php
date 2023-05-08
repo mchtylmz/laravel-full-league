@@ -63,8 +63,7 @@ class LoginController extends Controller
         return array_merge(
             $request->only($this->username(), 'password'),
             array(
-                'status' => StatusEnum::ACTIVE,
-                'login'  => StatusEnum::ACTIVE
+                'status' => StatusEnum::ACTIVE
             )
         );
     }

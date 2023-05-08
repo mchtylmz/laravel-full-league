@@ -23,14 +23,14 @@ return new class extends Migration
             $table->string('size')->nullable();
             $table->string('education')->nullable();
             $table->date('birthdate');
-            $table->integer('birthplace')->default(0);
-            $table->integer('nationality')->default(0);
-            $table->integer('country_id')->default(0);
+            $table->unsignedBigInteger('city_id')->nullable();
+            $table->unsignedBigInteger('nationality')->nullable();
             $table->unsignedBigInteger('team_id');
             $table->timestamps();
 
-            $table->foreign('team_id')->references('id')->on('teams')->onDelete('CASCADE');
-            $table->index(['team_id', 'country_id', 'nationality']);
+            $table->foreign('team_id')->references('id')->on('teams');
+            $table->foreign('city_id')->references('id')->on('cities');
+            $table->index(['team_id', 'city_id', 'nationality']);
         });
     }
 

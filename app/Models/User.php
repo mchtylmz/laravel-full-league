@@ -29,9 +29,7 @@ class User extends Authenticatable
         'email',
         'password',
         'status',
-        'login',
-        'role_id',
-        'email_verified_at',
+        'role_id'
     ];
 
     /**
@@ -51,8 +49,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'status' => StatusEnum::class,
-        'web' => StatusEnum::class
+        'status' => StatusEnum::class
     ];
 
 

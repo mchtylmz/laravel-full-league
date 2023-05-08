@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('description')->nullable();
             $table->longText('content');
-            $table->integer('status')->default(0);
+            $table->integer('status')->default(1);
             $table->integer('featured')->default(1);
             $table->unsignedBigInteger('viewed')->default(0);
             $table->string('source')->nullable();

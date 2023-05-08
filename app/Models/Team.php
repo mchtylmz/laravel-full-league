@@ -27,7 +27,7 @@ class Team extends Model
         'status' => StatusEnum::class
     ];
 
-    public function stadium()
+    public function stadium(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Stadium::class);
     }

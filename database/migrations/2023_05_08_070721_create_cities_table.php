@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('seasons', function (Blueprint $table) {
+        Schema::create('cities', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('status')->default(1);
-            $table->integer('transfer')->default(1);
-            $table->timestamps();
+            $table->string('code', 5)->nullable();
+            $table->unsignedBigInteger('country_id');
+
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('CASCADE');
+            $table->index(['country_id']);
         });
     }
 
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('seasons');
+        Schema::dropIfExists('cities');
     }
 };

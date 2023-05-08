@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Enums\StatusEnum;
+use App\Models\City;
+use App\Models\Country;
 use App\Models\Role;
 use App\Models\Season;
 use App\Models\User;
@@ -17,6 +20,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $tr = Country::create(['name' => 'Türkiye', 'code' => 'TR']);
+        $kktc = Country::create(['name' => 'Kuzey Kıbrıs', 'code' => 'KKTC']);
+
+        City::create(['name' => 'İstanbul', 'code' => '34', 'country_id' => $tr->id]);
+        City::create(['name' => 'İzmir', 'code' => '35', 'country_id' => $tr->id]);
+        City::create(['name' => 'Ankara', 'code' => '06', 'country_id' => $tr->id]);
+        City::create(['name' => 'Lefkoşa', 'code' => '01', 'country_id' => $kktc->id]);
+        City::create(['name' => 'Girne', 'code' => '02', 'country_id' => $kktc->id]);
+
         Role::create(['name' => 'Superadmin', 'code' => 100]);
         Role::create(['name' => 'Admin', 'code' => 99]);
         Role::create(['name' => 'Gözlemci', 'code' => 35]);
@@ -28,9 +40,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@example.com',
             'email_verified_at' => now(),
             'password' => Hash::make('123456'), // 123456
-            'status' => 1,
+            'status' => StatusEnum::ACTIVE,
             'role_id' => 1,
-            'login' => 1,
             'remember_token' => Str::random(10),
         ]);
         $admin->setMeta('birthdate', '1994-03-01');
