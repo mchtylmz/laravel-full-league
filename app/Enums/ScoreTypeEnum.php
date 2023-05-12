@@ -4,7 +4,7 @@ namespace App\Enums;
 
 enum ScoreTypeEnum : int
 {
-    case PASSIVE = 1;
+    case MS = 1;
 
     /**
      * @return string
@@ -12,7 +12,7 @@ enum ScoreTypeEnum : int
     public function label(): string
     {
         return match ($this) {
-            self::PASSIVE  => '1',
+            self::MS => '1',
         };
     }
 }
