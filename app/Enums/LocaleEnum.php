@@ -10,7 +10,7 @@ enum LocaleEnum : string
     /**
      * @return string
      */
-    public function label(): string
+    public function title(): string
     {
         return match ($this) {
             self::TR  => 'Türkçe',

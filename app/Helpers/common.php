@@ -3,7 +3,7 @@
 if (!function_exists('cases')) {
 
     /**
-     * @param string $type
+     * @param string $enum
      * @return array
      */
     function cases(string $enum): array
