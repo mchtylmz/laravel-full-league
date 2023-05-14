@@ -23,6 +23,7 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 
 Auth::routes(['register' => false]);
 
+Route::get('/detail/{post:slug}', [HomeController::class, 'detail'])->name('post.detail');
 
 Route::middleware(['auth'])->group(function () {
     // admin

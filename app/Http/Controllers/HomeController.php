@@ -26,6 +26,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        return view('welcome', [
+            'posts' => Post::with('category')->type('post')->get()
+        ]);
+    }
+
+    public function detail(Post $post)
+    {
+        return view('post.detail', [
+            'post' => $post
+        ]);
     }
 }

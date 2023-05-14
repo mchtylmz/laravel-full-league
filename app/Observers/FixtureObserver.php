@@ -9,13 +9,20 @@ class FixtureObserver
     /**
      * Handle the Category "created" event.
      */
-    public function created(Fixture $fixture): void
+    public function creating(Fixture $fixture): void
     {
         $lastFixture = Fixture::latest()->first();
         if (!$lastFixture) {
             $lastFixture = 0;
         }
         $fixture->code = intval($lastFixture->code) + 1;
+    }
+    /**
+     * Handle the Category "created" event.
+     */
+    public function created(Fixture $fixture): void
+    {
+        //
     }
 
     /**

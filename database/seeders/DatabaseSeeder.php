@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Enums\ScoreTypeEnum;
 use App\Enums\StatusEnum;
 use App\Models\City;
 use App\Models\Country;
@@ -14,6 +15,7 @@ use App\Models\Team;
 use App\Models\User;
 use App\Models\Week;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -133,6 +135,12 @@ class DatabaseSeeder extends Seeder
                 'home_id' => $team2->id,
                 'away_id' => $team1->id
             ]
+        ]);
+        $fixture = Fixture::first();
+        $fixture->scores()->create([
+            'type' => ScoreTypeEnum::MATCH_RESULT,
+            'home' => Arr::random([0, 5]),
+            'away' => Arr::random([0, 5])
         ]);
 
         \App\Models\Category::factory(5)->create();

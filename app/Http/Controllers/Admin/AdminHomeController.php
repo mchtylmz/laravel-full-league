@@ -19,10 +19,14 @@ class AdminHomeController extends Controller
      */
     public function index()
     {
+
+
+
         return view('admin.index', [
             'users' => User::with(['people', 'role'])->get(),
             'teams' => Team::all(),
-            'fixtures' => Fixture::with(['season', 'league', 'week', 'homeTeam', 'awayTeam'])->upComing()->get()
+            'fixturesUpComing' => Fixture::with(['season', 'league', 'week', 'homeTeam', 'awayTeam'])->upComing()->get(),
+            'fixturesPast' => Fixture::with(['season', 'league', 'week', 'homeTeam', 'awayTeam'])->past()->get(),
         ]);
     }
 }
