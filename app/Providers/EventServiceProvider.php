@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use App\Models\Fixture;
 use App\Models\Post;
 use App\Observers\CategoryObserver;
+use App\Observers\FixtureObserver;
 use App\Observers\PostObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -31,6 +33,7 @@ class EventServiceProvider extends ServiceProvider
     {
         Category::observe(CategoryObserver::class);
         Post::observe(PostObserver::class);
+        Fixture::observe(FixtureObserver::class);
     }
 
     /**

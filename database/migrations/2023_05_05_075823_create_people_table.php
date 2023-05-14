@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('people', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
+            $table->string('identity', 30)->nullable();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('identity', 30)->nullable();
+            $table->date('birthdate')->nullable();
+            $table->string('phone', 20)->nullable();
             $table->timestamps();
         });
     }

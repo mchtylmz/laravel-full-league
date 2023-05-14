@@ -20,12 +20,11 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->integer('status')->default(0);
             $table->unsignedBigInteger('people_id')->nullable();
-            $table->unsignedBigInteger('stadium_id');
+            $table->unsignedBigInteger('stadium_id')->nullable();
             $table->timestamps();
 
-            $table->foreign('stadium_id')->references('id')->on('stadiums');
-            $table->foreign('people_id')->references('id')->on('people');
-            $table->index(['stadium_id', 'status', 'people_id']);
+            $table->index(['stadium_id']);
+            $table->index(['people_id']);
         });
     }
 

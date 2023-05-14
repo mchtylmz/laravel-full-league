@@ -22,15 +22,16 @@ return new class extends Migration
             $table->string('mother_name')->nullable();
             $table->string('size')->nullable();
             $table->string('education')->nullable();
-            $table->date('birthdate');
+            $table->date('birthdate')->nullable();
             $table->unsignedBigInteger('city_id')->nullable();
-            $table->unsignedBigInteger('nationality')->nullable();
-            $table->unsignedBigInteger('team_id');
+            $table->unsignedBigInteger('nationality_id')->nullable();
+            $table->unsignedBigInteger('team_id')->nullable();
             $table->timestamps();
 
             $table->foreign('team_id')->references('id')->on('teams');
             $table->foreign('city_id')->references('id')->on('cities');
-            $table->index(['team_id', 'city_id', 'nationality']);
+            $table->index(['team_id']);
+            $table->index(['city_id']);
         });
     }
 

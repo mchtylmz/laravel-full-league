@@ -14,7 +14,10 @@ class People extends Model
 
     public $fillable = [
         'user_id',
+        'identity',
         'first_name',
-        'last_name'
+        'last_name',
+        'birthdate',
+        'phone'
     ];
 }

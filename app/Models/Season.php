@@ -25,4 +25,9 @@ class Season extends Model
     public $casts = [
         'status' => StatusEnum::class
     ];
+
+    public function leagues(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(League::class);
+    }
 }

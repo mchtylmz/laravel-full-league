@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Fixture;
 use App\Models\Role;
+use App\Models\Season;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -19,7 +21,8 @@ class AdminHomeController extends Controller
     {
         return view('admin.index', [
             'users' => User::with(['people', 'role'])->get(),
-            'teams' => Team::all()
+            'teams' => Team::all(),
+            'fixtures' => Fixture::with(['season', 'league', 'week', 'homeTeam', 'awayTeam'])->upComing()->get()
         ]);
     }
 }

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('status')->default(0);
             $table->timestamps();
 
-            $table->foreign('season_id')->references('id')->on('seasons')->onDelete('CASCADE');
+            $table->foreign('season_id')->references('id')->on('seasons');
             $table->index(['season_id', 'status', 'group']);
         });
     }

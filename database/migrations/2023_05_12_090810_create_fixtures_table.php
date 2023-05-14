@@ -13,17 +13,17 @@ return new class extends Migration
     {
         Schema::create('fixtures', function (Blueprint $table) {
             $table->id();
-            $table->string('match');
+            $table->string('code', 8)->default('1000');
             $table->unsignedBigInteger('season_id');
             $table->unsignedBigInteger('league_id');
             $table->unsignedBigInteger('week_id');
-            $table->date('match_date');
-            $table->time('match_hour');
+            $table->date('date');
+            $table->time('time');
             $table->unsignedBigInteger('stadium_id');
             $table->unsignedBigInteger('home_id');
             $table->unsignedBigInteger('away_id');
             $table->integer('delay')->default(0);
-            $table->integer('status')->default(0);
+            $table->integer('status')->default(1);
             $table->timestamps();
 
             $table->foreign('season_id')->references('id')->on('seasons');

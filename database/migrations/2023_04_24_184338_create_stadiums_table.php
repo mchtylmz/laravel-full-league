@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('stadiums', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->decimal('capacity')->default(0);
-            $table->integer('status')->default(0);
+            $table->integer('capacity')->default(0);
             $table->integer('region')->default(0);
             $table->decimal('price', 10, 2)->default(0);
             $table->float('lat')->default(0);

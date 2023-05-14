@@ -20,12 +20,18 @@ class Team extends Model
         'fax',
         'email',
         'status',
+        'people_id',
         'stadium_id'
     ];
 
     public $casts = [
         'status' => StatusEnum::class
     ];
+
+    public function president(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(People::class);
+    }
 
     public function stadium(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
