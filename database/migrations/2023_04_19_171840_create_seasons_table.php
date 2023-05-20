@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('seasons', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('status')->default(1);
-            $table->integer('transfer')->default(1);
+            $table->integer('status')->default(0);
+            $table->integer('transfer')->default(0);
             $table->timestamps();
         });
     }

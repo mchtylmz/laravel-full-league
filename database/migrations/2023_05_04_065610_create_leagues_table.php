@@ -20,7 +20,8 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('season_id')->references('id')->on('seasons');
-            $table->index(['season_id', 'status', 'group']);
+            $table->index(['season_id']);
+            $table->index(['status']);
         });
     }
 
