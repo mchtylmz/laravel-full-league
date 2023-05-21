@@ -21,12 +21,9 @@ return new class extends Migration
             $table->integer('status')->default(0);
             $table->unsignedBigInteger('people_id')->nullable();
             $table->unsignedBigInteger('stadium_id')->nullable();
-            $table->unsignedBigInteger('league_id');
             $table->timestamps();
 
-            $table->foreign('league_id')->references('id')->on('leagues');
             $table->index(['stadium_id']);
-            $table->index(['league_id']);
             $table->index(['people_id']);
         });
     }
