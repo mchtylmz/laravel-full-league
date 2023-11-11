@@ -19,10 +19,12 @@ enum StatusEnum: int
 
     public function badge(): string
     {
-        return match ($this) {
-            self::PASSIVE => sprintf('<span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill bg-danger-light text-danger">%s</span>', __('enum.status.passive')),
-            self::ACTIVE => sprintf('<span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill bg-success-light text-success">%s</span>', __('enum.status.active')),
-            self::ARCHIVE => sprintf('<span class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill bg-warning-light text-warning">%s</span>', __('enum.status.archive'))
+        $data = match ($this) {
+            self::PASSIVE => ['status' => 'danger', 'text' => __('enum.status.passive')],
+            self::ACTIVE => ['status' => 'success', 'text' => __('enum.status.active')],
+            self::ARCHIVE => ['status' => 'warning', 'text' => __('enum.status.archive')]
         };
+
+        return view('components.badge', $data)->render();
     }
 }
