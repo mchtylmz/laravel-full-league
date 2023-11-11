@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\StatusEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,14 +11,18 @@ class BoardMember extends Model
     use HasFactory;
 
     protected $fillable = [
-        'first_name',
-        'last_name',
+        'name',
+        'surname',
         'photo',
-        'position_tr',
-        'position_en',
+        'mission_tr',
+        'mission_en',
         'grid',
         'sort',
         'status',
+    ];
+
+    protected $casts = [
+        'status' => StatusEnum::class
     ];
 
     public function board()

@@ -33,45 +33,41 @@
             <ul class="nav-main">
                 <li class="nav-main-item">
                     <a class="nav-main-link {{ request()->routeIs('admin.home') ? 'active' : '' }}"
-                       href="{{ config('admin.prefix') }}">
+                       href="{{ route('admin.home') }}">
                         <i class="nav-main-link-icon fa fw-bold fa-home"></i>
                         <span class="nav-main-link-name">{{ __('menu.sidebar.home') }}</span>
                     </a>
                 </li>
 
-                <li class="nav-main-item">
-                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
-                        <i class="nav-main-link-icon si si-energy"></i>
-                        <span class="nav-main-link-name">Blocks</span>
-                    </a>
-                    <ul class="nav-main-submenu">
+                @foreach(menus()->role(admin()->role()->slug) as $menu)
+                    @if(!empty($menu->childs))
+                        @php $childRoutes = collect($menu->childs)->pluck('route'); @endphp
+                        <li class="nav-main-item {{ request()->routeIs($childRoutes) ? 'open' : ''}}">
+                            <a class="nav-main-link nav-main-link-submenu {{ request()->routeIs($childRoutes) ? 'active' : '' }}" data-toggle="submenu" href="#{{ $menu->name }}">
+                                <i @class(['nav-main-link-icon fw-bold', $menu->icon])></i>
+                                <span class="nav-main-link-name">{{ __($menu->title) }}</span>
+                            </a>
+                            <ul class="nav-main-submenu">
+                                @foreach($menu->childs as $child)
+                                    <li class="nav-main-item">
+                                        <a class="nav-main-link {{ request()->routeIs($child->route) ? 'active' : '' }}"
+                                           href="{{ route($child->route) }}">
+                                            <span class="nav-main-link-name">{{ __($child->title) }}</span>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
+                    @else
                         <li class="nav-main-item">
-                            <a class="nav-main-link" href="be_blocks_styles.html">
-                                <span class="nav-main-link-name">Styles</span>
+                            <a class="nav-main-link {{ request()->routeIs($menu->route) ? 'active' : '' }}"
+                               href="{{ route($menu->route) }}">
+                                <i @class(['nav-main-link-icon fw-bold', $menu->icon])></i>
+                                <span class="nav-main-link-name">{{ __($menu->title) }}</span>
                             </a>
                         </li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link" href="be_blocks_options.html">
-                                <span class="nav-main-link-name">Options</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link" href="be_blocks_forms.html">
-                                <span class="nav-main-link-name">Forms</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link" href="be_blocks_themed.html">
-                                <span class="nav-main-link-name">Themed</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link" href="be_blocks_api.html">
-                                <span class="nav-main-link-name">API</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                    @endif
+                @endforeach
 
             </ul>
         </div>

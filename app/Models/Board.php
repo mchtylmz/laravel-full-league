@@ -10,6 +10,10 @@ class Board extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'status' => StatusEnum::class
+    ];
+
     public function members()
     {
         return $this->hasMany(BoardMember::class)

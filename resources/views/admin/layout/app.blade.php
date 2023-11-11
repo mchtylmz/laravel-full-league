@@ -9,7 +9,10 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ assets()->admin(config('admin.logo')) }}">
     <!-- Style -->
+    <link rel="stylesheet" href="{{ assets()->admin('js/plugins/flatpickr/flatpickr.min.css') }}">
+    <link rel="stylesheet" href="{{ assets()->admin('js/plugins/select2/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ assets()->admin('css/oneui.min.css') }}">
+    <link rel="stylesheet" href="{{ assets()->admin('css/style.css') }}">
     <style>
         .admin-logo {
             height: 48px;
@@ -35,8 +38,22 @@
     <!-- END Footer -->
 </div>
 <!-- END Page Container -->
-
+<script>
+    const locale = '{{ app()->getLocale() }}';
+    const lang = {};
+</script>
 <script src="{{ assets()->admin('js/oneui.app.min.js') }}"></script>
+<script src="{{ assets()->admin('js/lib/jquery.min.js') }}"></script>
+<script src="{{ assets()->admin('js/plugins/flatpickr/flatpickr.min.js') }}"></script>
+<script src="{{ assets()->admin('js/plugins/flatpickr/l10n/tr.js') }}"></script>
+<script src="{{ assets()->admin('js/plugins/jquery.maskedinput/jquery.maskedinput.min.js') }}"></script>
+<script src="{{ assets()->admin('js/plugins/select2/js/select2.full.min.js') }}"></script>
+<script src="{{ assets()->admin('js/plugins/select2/js/i18n/tr.js') }}"></script>
+
+<script src="{{ assets()->admin('js/app.js') }}"></script>
+<script>
+    One.helpersOnLoad(['js-flatpickr', 'jq-select2', 'jq-masked-inputs']);
+</script>
 @stack('scripts')
 </body>
 </html>

@@ -71,4 +71,13 @@ class Assets
             $this->version
         ));
     }
+
+    public function uploads(string $file): string
+    {
+        return asset(sprintf(
+            'uploads/%s?v=%s',
+            $file,
+            $this->version
+        ));
+    }
 }

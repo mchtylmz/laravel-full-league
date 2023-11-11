@@ -16,6 +16,11 @@ trait HasRoleTrait
         return false;
     }
 
+    public function role()
+    {
+        return $this->roles()->first();
+    }
+
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'users_roles');

@@ -11,6 +11,7 @@ class HomeController extends Controller
 {
     public function index()
     {
+
         $boards = Board::with('members')->where('status', StatusEnum::ACTIVE)->get();
 
         /*

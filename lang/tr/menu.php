@@ -7,6 +7,10 @@ return [
     ],
 
     'sidebar' => [
-        'home' => 'Anasayfa'
+        'home' => 'Anasayfa',
+        'posts' => 'Haberler',
+        'boards' => 'Kurullar',
+        'board_members' => 'Kurul Üyeleri',
+        'sponsors' => 'Sponsorlar',
     ],
 ];

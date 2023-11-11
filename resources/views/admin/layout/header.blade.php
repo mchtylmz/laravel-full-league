@@ -30,7 +30,7 @@
                 <div class="dropdown-menu dropdown-menu-md dropdown-menu-end p-0 border-0" aria-labelledby="page-header-user-dropdown">
                     <div class="p-3 text-center bg-body-light border-bottom rounded-top">
                         <p class="mt-2 mb-0 fw-medium">{{ admin()->name }}</p>
-                        <p class="mb-0 text-muted fs-sm fw-medium">----ROLE-----</p>
+                        <p class="mb-0 text-muted fs-sm fw-medium">{{ admin()->role()?->name }}</p>
                     </div>
                     <div class="p-2">
                         <a class="dropdown-item d-flex align-items-center justify-content-between" href="">

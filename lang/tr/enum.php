@@ -6,4 +6,7 @@ return [
         'passive' => 'Pasif',
         'archive' => 'Arşiv'
     ],
+
+    'choose' => 'Seçiniz',
+    'all' => 'Tümü',
 ];
