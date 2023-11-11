@@ -23,7 +23,6 @@ class Board extends Model
 
     public function members()
     {
-        return $this->hasMany(BoardMember::class)
-            ->where('status', StatusEnum::ACTIVE);
+        return $this->hasMany(BoardMember::class);
     }
 }

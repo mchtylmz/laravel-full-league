@@ -30,7 +30,6 @@
             <div class="block-content">
                 <x-bootstrap-table id="boardMembersTable" route="{{ route('admin.boards.members.json', request()->query()) }}">
                     <x-slot name="columns">
-                        <th data-field="sort" data-sortable="true">{{ __('board.table.sort') }}</th>
                         <th data-field="photo" data-formatter="setHtml">{{ __('board.table.photo') }}</th>
                         <th data-field="name">{{ __('board.table.name') }}</th>
                         <th data-field="surname">{{ __('board.table.surname') }}</th>

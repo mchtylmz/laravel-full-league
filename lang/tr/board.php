@@ -15,6 +15,8 @@ return [
         'success' => 'Başarıyla kayıt edildi',
         'delete_error' => 'Kurul silinemedi!',
         'delete_success' => 'Kurul silindi!',
+        'delete_member_error' => 'Kurul üyesi silinemedi!',
+        'delete_member_success' => 'Kurul üyesi silindi!',
     ],
 
     'members' => [
@@ -33,6 +35,7 @@ return [
         'name' => 'İsim',
         'surname' => 'Soyisim',
         'members_count' => 'Üye Sayısı',
+        'grid' => 'Görünüm',
         'sort' => 'Sıra',
         'status' => 'Durum',
         'actions' => 'İşlemler'

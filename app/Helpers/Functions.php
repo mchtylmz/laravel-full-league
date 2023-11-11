@@ -24,7 +24,8 @@ if (!function_exists('cases'))
     function cases(string $name)
     {
         return match ($name) {
-          'status' => \App\Enums\StatusEnum::cases()
+          'status' => \App\Enums\StatusEnum::cases(),
+          'grid' => \App\Enums\GridEnum::cases(),
         };
     }
 }
