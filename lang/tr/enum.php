@@ -9,6 +9,8 @@ return [
 
     'choose' => 'Seçiniz',
     'all' => 'Tümü',
+    'left' => 'Sol',
+    'right' => 'Sağ',
 
     'delete' => 'İlgili içerik silinecektir, işleme devam edilsin mi?',
 

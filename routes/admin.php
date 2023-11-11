@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Models\Board;
 use App\Models\BoardMember;
+use App\Models\Sponsor;
 
 use \App\Http\Controllers\Admin\Auth\LoginController;
 use \App\Http\Controllers\Admin\Auth\LogoutController;
@@ -10,6 +11,7 @@ use \App\Http\Controllers\Admin\Home\HomeController;
 use \App\Http\Controllers\Admin\Profile\ProfileController;
 use \App\Http\Controllers\Admin\Board\BoardController;
 use \App\Http\Controllers\Admin\Board\BoardMemberController;
+use \App\Http\Controllers\Admin\Sponsor\SponsorController;
 use \App\Http\Controllers\Admin\Post\PostController;
 
 // AUTH
@@ -51,7 +53,13 @@ Route::middleware('auth')->group(function () {
         });
 
         Route::prefix('sponsors')->group(function () {
-            Route::get('', [BoardController::class, 'index'])->name('sponsors');
+            Route::get('', [SponsorController::class, 'index'])->name('sponsors');
+            Route::get('create', [SponsorController::class, 'create'])->name('sponsors.create');
+            Route::post('create', [SponsorController::class, 'store'])->name('sponsors.create');
+            Route::get('update/{sponsor:id}', [SponsorController::class, 'update'])->name('sponsors.update');
+            Route::post('update/{sponsor:id}', [SponsorController::class, 'save'])->name('sponsors.update');
+            Route::delete('delete/{sponsor:id}', [SponsorController::class, 'delete'])->name('sponsors.delete');
+            Route::get('json', [SponsorController::class, 'json'])->name('sponsors.json');
         });
 
         Route::redirect('activity', 'user-activity')->name('activity');

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Repositories\Admin\Board;
+namespace App\Repositories\Admin\Board;
 
 
 use App\Http\Resources\Admin\Boards\BoardResource;
@@ -11,6 +11,8 @@ class BoardRepository
 {
     public $data;
 
+    public $count;
+
     public function all()
     {
         return $this->data = Board::with('members')->get();
@@ -20,16 +22,19 @@ class BoardRepository
     {
         $board = Board::withCount('members');
 
+        if ($sort = $request->get('sort')) {
+            $board->orderBy($sort, $request->order ?? 'ASC');
+        } else {
+            $board->orderBy('sort');
+        }
+
+        $this->count = $board->count();
+
         if ($offset = $request->get('offset')) {
             $board->offset($offset);
         }
         if ($limit = $request->get('limit')) {
             $board->limit($limit);
-        }
-        if ($sort = $request->get('sort')) {
-            $board->orderBy($sort, $request->order ?? 'ASC');
-        } else {
-            $board->orderBy('sort');
         }
 
         return $this->data = $board->get();
@@ -40,8 +45,8 @@ class BoardRepository
         $data = BoardResource::collection($this->search($request));
         return [
             'rows' => $data,
-            'total' => $data->count(),
-            'totalNotFiltered' => $data->count(),
+            'total' => $this->count,
+            'totalNotFiltered' => $this->count,
         ];
     }
 }

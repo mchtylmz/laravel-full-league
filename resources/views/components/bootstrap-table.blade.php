@@ -15,6 +15,7 @@
         data-side-pagination="{{ $pagination }}"
         data-pagination="true"
         data-pagination-info="false"
+        data-page-list="All"
         data-show-refresh="{{ $refresh }}"
         data-page-size="{{ $size }}"
         data-search="{{ $search }}"

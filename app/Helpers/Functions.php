@@ -15,6 +15,7 @@ if (!function_exists('services'))
         return match ($name) {
           'auth' => new \App\Services\Admin\AuthService(),
           'board' => new \App\Services\Admin\BoardService(),
+          'sponsor' => new \App\Services\Admin\SponsorService(),
         };
     }
 }
@@ -36,7 +37,8 @@ if (!function_exists('repositories'))
     {
         return match ($name) {
           'board' => new \App\Repositories\Admin\Board\BoardRepository(),
-          'boardMembers' => new \App\Repositories\Admin\Board\BoardMemberRepository()
+          'boardMembers' => new \App\Repositories\Admin\Board\BoardMemberRepository(),
+          'sponsor' => new \App\Repositories\Admin\Sponsor\SponsorRepository()
         };
     }
 }
