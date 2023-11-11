@@ -80,6 +80,15 @@ class SidebarMenu
                 'role' => 'admin', // role slug (,)
                 'childs' => []
             ],
+
+            150 => [
+                'name' => 'activity',
+                'icon' => 'fa fa-chart-bar',
+                'route' => 'admin.activity', // route name
+                'title' => 'menu.sidebar.activity', // lang key
+                'role' => 'admin', // role slug (,)
+                'childs' => []
+            ],
         ]);
     }
 

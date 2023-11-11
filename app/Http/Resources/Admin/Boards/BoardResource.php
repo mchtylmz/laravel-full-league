@@ -14,18 +14,25 @@ class BoardResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        $photo = view('components.images.avatar', ['src' => $this->photo?->url])->render();
+        $action = view('admin.board.actions', [
+            'routeEdit' => route('admin.boards.update', $this->id),
+            'routeDelete' => route('admin.boards.delete', $this->id),
+            'messageDelete' => trans('board.delete')
+        ])->render();
+
         return [
             'id' => $this->id,
             'title_tr' => $this->title_tr,
             'title_en' => $this->title_en,
-            'photo' => $this->photo,
-            'photo_html' => view('components.images.avatar', ['src' => $this->photo])->render(),
+            'photo' => $this->photo?->url,
+            'photo_html' => $photo,
             'sort' => $this->sort,
             'status' => $this->status,
             'status_html' => $this->status->badge(),
             'members' => $this->members,
             'members_count' => $this->members->count(),
-            'actions' => view('admin.board.actions', ['board' => $this])->render()
+            'actions' => $action
         ];
     }
 }

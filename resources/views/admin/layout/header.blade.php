@@ -33,11 +33,8 @@
                         <p class="mb-0 text-muted fs-sm fw-medium">{{ admin()->role()?->name }}</p>
                     </div>
                     <div class="p-2">
-                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="">
+                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="{{ route('admin.profile') }}">
                             <span class="fs-sm fw-medium">{{ __('menu.user.profile') }}</span>
-                        </a>
-                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="">
-                            <span class="fs-sm fw-medium">{{ __('menu.user.password') }}</span>
                         </a>
                     </div>
                     <div role="separator" class="dropdown-divider m-0"></div>

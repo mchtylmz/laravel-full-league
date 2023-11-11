@@ -7,12 +7,12 @@
     <!-- Page Content -->
     <div class="content">
         <div class="block-options text-end mb-3">
-            <button type="button" class="btn btn-alt-success px-4">
+            <a href="{{ route('admin.boards.create') }}" class="btn btn-alt-success px-4">
                 <i class="fa fa-plus me-1 opacity-50"></i> {{ __('board.create') }}
-            </button>
-            <button type="button" class="btn btn-alt-primary px-4">
+            </a>
+            <a href="{{ route('admin.boards.members.create') }}" class="btn btn-alt-primary px-4">
                 <i class="fa fa-user-plus me-1 opacity-50"></i> {{ __('board.members.create') }}
-            </button>
+            </a>
         </div>
 
         <div class="block block-rounded">

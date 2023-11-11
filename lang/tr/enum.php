@@ -9,4 +9,13 @@ return [
 
     'choose' => 'Seçiniz',
     'all' => 'Tümü',
+
+    'delete' => 'İlgili içerik silinecektir, işleme devam edilsin mi?',
+
+    'toast' => [
+        'ok' => 'Tamam',
+        'delete' => 'Sil',
+        'confirm' => 'Onayla',
+        'cancel' => 'Vazgeç'
+    ],
 ];

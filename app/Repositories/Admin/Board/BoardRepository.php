@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories;
+namespace app\Repositories\Admin\Board;
 
 
 use App\Http\Resources\Admin\Boards\BoardResource;

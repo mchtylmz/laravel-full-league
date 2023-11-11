@@ -3,9 +3,9 @@
 return [
     'activated'        => true,
     'middleware'       => ['web', 'auth'],
-    'route_path'       => config('auth.prefix.admin', 'panel') . '/user-activity',
-    'admin_panel_path' => config('auth.prefix.admin', 'panel') . '/dashboard',
-    'delete_limit'     => 30,
+    'route_path'       => config('admin.prefix', 'admin') . '/user-activity',
+    'admin_panel_path' => config('admin.prefix', 'admin') . '/',
+    'delete_limit'     => 60,
 
     'model' => [
         'user' => "App\Models\User"

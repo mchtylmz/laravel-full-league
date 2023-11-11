@@ -7,7 +7,7 @@
     <!-- Page Content -->
     <div class="content">
 
-        <div class="row g-2 mb-3 block-header-default align-items-center block-content">
+        <div class="row g-2 mb-3 align-items-center block-content p-0">
             <div class="col-lg-8 pb-3">
                 <select class="js-select2 form-select" name="board_id" data-onchange="table" data-table="#boardMembersTable">
                     <option value="">{{ __('board.all') }}</option>
@@ -17,9 +17,9 @@
                 </select>
             </div>
             <div class="col-lg-4 block-options text-end mb-0 pb-3">
-                <button type="button" class="btn btn-alt-primary px-4">
+                <a href="{{ route('admin.boards.members.create') }}" class="btn btn-alt-primary px-4">
                     <i class="fa fa-user-plus me-1 opacity-50"></i> {{ __('board.members.create') }}
-                </button>
+                </a>
             </div>
         </div>
 

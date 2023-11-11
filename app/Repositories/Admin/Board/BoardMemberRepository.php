@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Repositories;
+namespace app\Repositories\Admin\Board;
 
 
 use App\Http\Resources\Admin\Boards\BoardMemberResource;
-use App\Models\Board;
 use App\Models\BoardMember;
 use Illuminate\Http\Request;
 

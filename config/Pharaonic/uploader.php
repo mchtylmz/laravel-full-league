@@ -4,7 +4,7 @@ return [
     /**
      * Storage Disk (local, public, s3, ...)
      */
-    'disk'  => 'public',
+    'disk'  => 'local',
 
     /**
      * Uploading Path

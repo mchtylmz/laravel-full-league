@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('board_id');
             $table->string('name');
             $table->string('surname');
-            $table->string('photo')->nullable();
+            $table->unsignedBigInteger('upload_id')->nullable();
             $table->string('mission_tr');
             $table->string('mission_en')->nullable();
             $table->tinyInteger('grid')->default(12);

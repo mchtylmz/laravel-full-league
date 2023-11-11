@@ -11,6 +11,7 @@
     <!-- Style -->
     <link rel="stylesheet" href="{{ assets()->admin('js/plugins/flatpickr/flatpickr.min.css') }}">
     <link rel="stylesheet" href="{{ assets()->admin('js/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ assets()->admin('js/plugins/sweetalert2/sweetalert2.min.css') }}">
     <link rel="stylesheet" href="{{ assets()->admin('css/oneui.min.css') }}">
     <link rel="stylesheet" href="{{ assets()->admin('css/style.css') }}">
     <style>
@@ -39,16 +40,19 @@
 </div>
 <!-- END Page Container -->
 <script>
-    const locale = '{{ app()->getLocale() }}';
-    const lang = {};
+const locale = '{{ app()->getLocale() }}';
+const lang = @php echo json_encode(trans('enum'), JSON_PRETTY_PRINT); @endphp;
 </script>
 <script src="{{ assets()->admin('js/oneui.app.min.js') }}"></script>
 <script src="{{ assets()->admin('js/lib/jquery.min.js') }}"></script>
+<script src="{{ assets()->admin('js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
+<script src="{{ assets()->admin('js/plugins/jquery-validation/localization/messages_tr.min.js') }}"></script>
 <script src="{{ assets()->admin('js/plugins/flatpickr/flatpickr.min.js') }}"></script>
 <script src="{{ assets()->admin('js/plugins/flatpickr/l10n/tr.js') }}"></script>
 <script src="{{ assets()->admin('js/plugins/jquery.maskedinput/jquery.maskedinput.min.js') }}"></script>
 <script src="{{ assets()->admin('js/plugins/select2/js/select2.full.min.js') }}"></script>
 <script src="{{ assets()->admin('js/plugins/select2/js/i18n/tr.js') }}"></script>
+<script src="{{ assets()->admin('js/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
 
 <script src="{{ assets()->admin('js/app.js') }}"></script>
 <script>

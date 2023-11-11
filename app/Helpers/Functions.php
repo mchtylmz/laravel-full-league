@@ -13,7 +13,18 @@ if (!function_exists('services'))
     function services(string $name)
     {
         return match ($name) {
-          'auth' => new \App\Services\AuthService()
+          'auth' => new \App\Services\Admin\AuthService(),
+          'board' => new \App\Services\Admin\BoardService(),
+        };
+    }
+}
+
+if (!function_exists('cases'))
+{
+    function cases(string $name)
+    {
+        return match ($name) {
+          'status' => \App\Enums\StatusEnum::cases()
         };
     }
 }
@@ -23,8 +34,8 @@ if (!function_exists('repositories'))
     function repositories(string $name)
     {
         return match ($name) {
-          'board' => new \App\Repositories\BoardRepository(),
-          'boardMembers' => new \App\Repositories\BoardMemberRepository()
+          'board' => new \App\Repositories\Admin\Board\BoardRepository(),
+          'boardMembers' => new \App\Repositories\Admin\Board\BoardMemberRepository()
         };
     }
 }

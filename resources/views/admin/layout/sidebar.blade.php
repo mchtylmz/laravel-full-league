@@ -2,7 +2,7 @@
     <!-- Side Header -->
     <div class="content-header">
         <!-- Logo -->
-        <a class="fw-semibold text-dual" href="{{ config('admin.prefix') }}">
+        <a class="fw-semibold text-dual" href="{{ route('admin.home') }}">
             <span class="smini-visible">
               <i class="fa fa-circle-notch text-primary"></i>
             </span>

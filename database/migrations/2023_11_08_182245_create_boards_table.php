@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('boards', function (Blueprint $table) {
             $table->id();
             $table->string('title_tr');
-            $table->string('title_en');
-            $table->string('photo')->nullable();
+            $table->string('title_en')->nullable();
+            $table->unsignedBigInteger('upload_id')->nullable();
             $table->tinyInteger('sort')->default(0);
             $table->tinyInteger('status')->default(\App\Enums\StatusEnum::PASSIVE);
             $table->timestamps();
