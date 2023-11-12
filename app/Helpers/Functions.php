@@ -38,7 +38,8 @@ if (!function_exists('repositories'))
         return match ($name) {
           'board' => new \App\Repositories\Admin\Board\BoardRepository(),
           'boardMembers' => new \App\Repositories\Admin\Board\BoardMemberRepository(),
-          'sponsor' => new \App\Repositories\Admin\Sponsor\SponsorRepository()
+          'sponsor' => new \App\Repositories\Admin\Sponsor\SponsorRepository(),
+          'post' => new \App\Repositories\Admin\Post\PostRepository(),
         };
     }
 }

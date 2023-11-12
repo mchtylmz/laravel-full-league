@@ -5,13 +5,10 @@
 @section('content')
 
 
-    @foreach($boards as $board)
-        {{ $board->title_tr }}
+    @foreach(\App\Models\Season::all() as $season)
+        {{ $season->name }}
         <br>
-        @foreach($board->members as $member)
-
-            - {{ $member->first_name }} - <br>
-        @endforeach
+        {!! dump($season->leagues) !!}
 
         <hr>
 

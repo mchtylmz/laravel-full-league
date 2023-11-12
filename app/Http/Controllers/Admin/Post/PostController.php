@@ -11,4 +11,9 @@ class PostController extends Controller
     {
         return view('admin.posts.index');
     }
+
+    public function json(Request $request)
+    {
+        return response()->json(repositories('post')->table($request));
+    }
 }

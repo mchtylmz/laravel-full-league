@@ -55,6 +55,12 @@ class SidebarMenu
     {
         return [
             [
+                'name' => 'post_types',
+                'icon' => 'fa fa-news',
+                'route' => 'admin.settings.activity', // route name
+                'title' => 'menu.sidebar.post_types', // lang key
+            ],
+            [
                 'name' => 'activity',
                 'icon' => 'fa fa-th-bug',
                 'route' => 'admin.settings.activity', // route name
@@ -66,6 +72,22 @@ class SidebarMenu
     protected function init(): void
     {
         self::$menus = collect([
+            80 => [
+                'name' => 'leagues',
+                'icon' => 'fa fa-futbol',
+                'route' => 'admin.posts.index', // route name
+                'title' => 'menu.sidebar.leagues', // lang key
+                'role' => 'admin', // role slug (,)
+                'childs' => []
+            ],
+            90 => [
+                'name' => 'seasons',
+                'icon' => 'fa fa-futbol',
+                'route' => 'admin.posts.index', // route name
+                'title' => 'menu.sidebar.seasons', // lang key
+                'role' => 'admin', // role slug (,)
+                'childs' => []
+            ],
             100 => [
                 'name' => 'posts',
                 'icon' => 'fa fa-newspaper',
@@ -95,7 +117,7 @@ class SidebarMenu
 
             200 => [
                 'name' => 'settings',
-                'icon' => 'fa fa-cogs',
+                'icon' => 'fa fa-cog',
                 'route' => 'admin', // route name
                 'title' => 'menu.sidebar.settings', // lang key
                 'role' => 'admin', // role slug (,)

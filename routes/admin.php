@@ -67,8 +67,9 @@ Route::middleware('auth')->group(function () {
         });
 
         // settings
+        Route::redirect('activity', 'user-activity')->name('settings.activity');
         Route::prefix('settings')->name('settings.')->group(function () {
-            Route::redirect('activity', 'user-activity')->name('activity');
+
         });
 
     });
