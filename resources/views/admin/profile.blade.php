@@ -8,7 +8,7 @@
         <div class="bg-primary-dark-op">
             <div class="content content-full text-center">
                 <div class="my-3">
-                    <x-images.profile src="{{ admin()->role()?->name }}"/>
+                    <x-image type="profile" src="{{ admin()->role()?->name }}"/>
                 </div>
                 <h1 class="h2 text-white mb-0">{{ admin()->name }}</h1>
                 <h2 class="h4 fw-normal text-white-75">

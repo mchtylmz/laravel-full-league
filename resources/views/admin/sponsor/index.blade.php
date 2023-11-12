@@ -6,7 +6,7 @@
 
     <!-- Page Content -->
     <div class="content">
-        <div class="block-options text-end mb-3">
+        <div class="block-options text-start mb-3 px-0">
             <a href="{{ route('admin.sponsors.create') }}" class="btn btn-alt-success px-4">
                 <i class="fa fa-plus me-1 opacity-50"></i> {{ __('sponsor.create') }}
             </a>

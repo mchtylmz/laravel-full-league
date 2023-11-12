@@ -25,7 +25,7 @@ class SponsorController extends Controller
 
         return response()->json([
             'message' => trans('sponsor.form.success'),
-            'redirectTo' => route('admin.sponsors')
+            'redirectTo' => route('admin.sponsors.index')
         ]);
     }
 
@@ -40,13 +40,13 @@ class SponsorController extends Controller
 
         return response()->json([
             'message' => trans('sponsor.form.success'),
-            'redirectTo' => route('admin.sponsors')
+            'redirectTo' => route('admin.sponsors.index')
         ]);
     }
 
     public function delete(Sponsor $sponsor)
     {
-        if (!$sponsor->delete()) {
+        if (!services('sponsor')->delete($sponsor)) {
             return response()->json([
                 'message' => trans('sponsor.form.delete_error')
             ], 422);

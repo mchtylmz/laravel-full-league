@@ -12,14 +12,14 @@
     </div>
     <div class="col-lg-12 mb-3">
         @if(!empty($sponsor) && $sponsor->photo)
-            <div class="mb-2" id="preview"><x-images.full src="{{ $sponsor->photo->url }}" /></div>
+            <div class="mb-2" id="preview"><x-image type="full" src="{{ $sponsor->photo->url }}" /></div>
         @endif
         <label class="form-label" for="photo">{{ __('sponsor.table.photo') }}</label>
         <input type="file" class="form-control" id="photo" name="photo" data-toggle="preview" data-target="#preview" accept="image/jpeg,image/png,image/jpg" @required(empty($sponsor))>
     </div>
     <div class="col-lg-4 mb-3">
         <label class="form-label" for="sort">{{ __('sponsor.table.sort') }}</label>
-        <input type="number" min="1" class="form-control" id="sort" name="sort" autocomplete="off" placeholder="{{ __('sponsor.table.sort') }}" value="{{ $sponsor->sort ?? '' }}" required>
+        <input type="number" min="1" max="99" class="form-control" id="sort" name="sort" autocomplete="off" placeholder="{{ __('sponsor.table.sort') }}" value="{{ $sponsor->sort ?? '' }}" required>
     </div>
     <div class="col-lg-4 mb-3">
         <label class="form-label" for="type">{{ __('sponsor.table.type') }}</label>

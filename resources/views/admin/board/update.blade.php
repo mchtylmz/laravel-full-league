@@ -11,7 +11,7 @@
             <div class="block-content">
                 <form action="{{ route('admin.boards.update', $board->id) }}" method="POST" data-toggle="ajax">
                     @csrf
-                    @include('admin.board.forms.board', ['board' => $board])
+                    @include('components.forms.board', ['board' => $board])
                     <div class="mb-3 text-center">
                         <button type="submit" class="btn btn-alt-primary px-5">
                             <i class="fa fa-save fw-bold mx-2"></i> {{ __('board.form.create_submit') }}

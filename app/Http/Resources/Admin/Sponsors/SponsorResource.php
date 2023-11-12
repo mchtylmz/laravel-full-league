@@ -14,8 +14,11 @@ class SponsorResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $photo = view('components.images.full', ['src' => $this->photo?->url])->render();
-        $action = view('admin.sponsor.actions', [
+        $photo = view('components.image', [
+            'type' => 'full',
+            'src' => $this->photo?->url
+        ])->render();
+        $action = view('components.actions', [
             'routeEdit' => route('admin.sponsors.update', $this->id),
             'routeDelete' => route('admin.sponsors.delete', $this->id),
             'messageDelete' => trans('sponsor.delete')

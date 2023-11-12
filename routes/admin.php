@@ -14,7 +14,6 @@ use \App\Http\Controllers\Admin\Board\BoardMemberController;
 use \App\Http\Controllers\Admin\Sponsor\SponsorController;
 use \App\Http\Controllers\Admin\Post\PostController;
 
-// AUTH
 Route::middleware('guest')->group(function () {
     Route::get('login', [LoginController::class, 'index'])->name('login');
     Route::post('login', [LoginController::class, 'login'])->name('login');
@@ -28,41 +27,50 @@ Route::middleware('auth')->group(function () {
 
     // middleware admin
     Route::middleware('role:admin')->group(function () {
-        Route::prefix('posts')->group(function () {
-            Route::get('', [PostController::class, 'index'])->name('posts');
+        // posts
+        Route::prefix('posts')->name('posts.')->group(function () {
+            Route::get('', [PostController::class, 'index'])->name('index');
         });
 
-        Route::prefix('boards')->group(function () {
-            Route::get('', [BoardController::class, 'index'])->name('boards');
-            Route::get('create', [BoardController::class, 'create'])->name('boards.create');
-            Route::post('create', [BoardController::class, 'store'])->name('boards.create');
-            Route::get('update/{board:id}', [BoardController::class, 'update'])->name('boards.update');
-            Route::post('update/{board:id}', [BoardController::class, 'save'])->name('boards.update');
-            Route::delete('delete/{board:id}', [BoardController::class, 'delete'])->name('boards.delete');
-            Route::get('json', [BoardController::class, 'json'])->name('boards.json');
+        // boards & members
+        Route::prefix('boards')->name('boards.')->group(function () {
+            // boards
+            Route::get('', [BoardController::class, 'index'])->name('index');
+            Route::get('create', [BoardController::class, 'create'])->name('create');
+            Route::post('create', [BoardController::class, 'store'])->name('create');
+            Route::get('update/{board:id}', [BoardController::class, 'update'])->name('update');
+            Route::post('update/{board:id}', [BoardController::class, 'save'])->name('update');
+            Route::delete('delete/{board:id}', [BoardController::class, 'delete'])->name('delete');
+            Route::get('json', [BoardController::class, 'json'])->name('json');
 
-            Route::prefix('members')->name('boards.')->group(function () {
-                Route::get('', [BoardMemberController::class, 'index'])->name('members');
-                Route::get('/create', [BoardMemberController::class, 'create'])->name('members.create');
-                Route::post('/create', [BoardMemberController::class, 'store'])->name('members.create');
-                Route::get('update/{boardMember:id}', [BoardMemberController::class, 'update'])->name('members.update');
-                Route::post('update/{boardMember:id}', [BoardMemberController::class, 'save'])->name('members.update');
-                Route::delete('delete/{boardMember:id}', [BoardMemberController::class, 'delete'])->name('members.delete');
-                Route::get('json', [BoardMemberController::class, 'json'])->name('members.json');
+            // members
+            Route::prefix('members')->name('members.')->group(function () {
+                Route::get('', [BoardMemberController::class, 'index'])->name('index');
+                Route::get('/create', [BoardMemberController::class, 'create'])->name('create');
+                Route::post('/create', [BoardMemberController::class, 'store'])->name('create');
+                Route::get('update/{boardMember:id}', [BoardMemberController::class, 'update'])->name('update');
+                Route::post('update/{boardMember:id}', [BoardMemberController::class, 'save'])->name('update');
+                Route::delete('delete/{boardMember:id}', [BoardMemberController::class, 'delete'])->name('delete');
+                Route::get('json', [BoardMemberController::class, 'json'])->name('json');
             });
         });
 
-        Route::prefix('sponsors')->group(function () {
-            Route::get('', [SponsorController::class, 'index'])->name('sponsors');
-            Route::get('create', [SponsorController::class, 'create'])->name('sponsors.create');
-            Route::post('create', [SponsorController::class, 'store'])->name('sponsors.create');
-            Route::get('update/{sponsor:id}', [SponsorController::class, 'update'])->name('sponsors.update');
-            Route::post('update/{sponsor:id}', [SponsorController::class, 'save'])->name('sponsors.update');
-            Route::delete('delete/{sponsor:id}', [SponsorController::class, 'delete'])->name('sponsors.delete');
-            Route::get('json', [SponsorController::class, 'json'])->name('sponsors.json');
+        // sponsors
+        Route::prefix('sponsors')->name('sponsors.')->group(function () {
+            Route::get('', [SponsorController::class, 'index'])->name('index');
+            Route::get('create', [SponsorController::class, 'create'])->name('create');
+            Route::post('create', [SponsorController::class, 'store'])->name('create');
+            Route::get('update/{sponsor:id}', [SponsorController::class, 'update'])->name('update');
+            Route::post('update/{sponsor:id}', [SponsorController::class, 'save'])->name('update');
+            Route::delete('delete/{sponsor:id}', [SponsorController::class, 'delete'])->name('delete');
+            Route::get('json', [SponsorController::class, 'json'])->name('json');
         });
 
-        Route::redirect('activity', 'user-activity')->name('activity');
+        // settings
+        Route::prefix('settings')->name('settings.')->group(function () {
+            Route::redirect('activity', 'user-activity')->name('activity');
+        });
+
     });
 
     Route::get('logout', [LogoutController::class, 'index'])->name('logout');

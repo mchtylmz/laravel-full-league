@@ -14,8 +14,11 @@ class BoardMemberResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $photo = view('components.images.avatar', ['src' => $this->photo?->url])->render();
-        $action = view('admin.board.actions', [
+        $photo = view('components.image', [
+            'type' => 'avatar',
+            'src' => $this->photo?->url
+        ])->render();
+        $action = view('components.actions', [
             'routeEdit' => route('admin.boards.members.update', $this->id),
             'routeDelete' => route('admin.boards.members.delete', $this->id),
             'messageDelete' => trans('board.members.delete')

@@ -1,26 +1,27 @@
 @extends('admin.layout.app')
 
-@section('title', __('board.title'))
+@section('title', __('post.title'))
 
 @section('content')
 
     <!-- Page Content -->
     <div class="content">
         <div class="block-options text-start mb-3 px-0">
-            <a href="{{ route('admin.boards.create') }}" class="btn btn-alt-success px-4">
-                <i class="fa fa-plus me-1 opacity-50"></i> {{ __('board.create') }}
-            </a>
-            <a href="{{ route('admin.boards.members.create') }}" class="btn btn-alt-primary px-4">
-                <i class="fa fa-user-plus me-1 opacity-50"></i> {{ __('board.members.create') }}
+            <a href="{{ route('admin.boards.create') }}" class="btn btn-alt-success px-5">
+                <i class="fa fa-plus me-1 opacity-50"></i> {{ __('post.create') }}
             </a>
         </div>
 
         <div class="block block-rounded">
             <div class="block-header block-header-default">
-                <h3 class="block-title">{{ __('board.title') }}</h3>
+                <h3 class="block-title">{{ __('post.title') }}</h3>
             </div>
             <div class="block-content">
-                <x-bootstrap-table search="false" route="{{ route('admin.boards.json') }}">
+                <div>
+                    sass
+                </div>
+
+                <x-bootstrap-table route="{{ route('admin.boards.json') }}">
                     <x-slot name="columns">
                         <th data-field="sort" data-sortable="true" data-wdith="5%">{{ __('board.table.sort') }}</th>
                         <th data-field="photo" data-formatter="setHtml">{{ __('board.table.photo') }}</th>

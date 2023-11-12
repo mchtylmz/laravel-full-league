@@ -14,11 +14,6 @@
     <link rel="stylesheet" href="{{ assets()->admin('js/plugins/sweetalert2/sweetalert2.min.css') }}">
     <link rel="stylesheet" href="{{ assets()->admin('css/oneui.min.css') }}">
     <link rel="stylesheet" href="{{ assets()->admin('css/style.css') }}">
-    <style>
-        .admin-logo {
-            height: 48px;
-        }
-    </style>
     @stack('styles')
 </head>
 <body>
@@ -53,7 +48,7 @@ const lang = @php echo json_encode(trans('enum'), JSON_PRETTY_PRINT); @endphp;
 <script src="{{ assets()->admin('js/plugins/select2/js/select2.full.min.js') }}"></script>
 <script src="{{ assets()->admin('js/plugins/select2/js/i18n/tr.js') }}"></script>
 <script src="{{ assets()->admin('js/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
-
+<!-- Custom -->
 <script src="{{ assets()->admin('js/app.js') }}"></script>
 <script>
     One.helpersOnLoad(['js-flatpickr', 'jq-select2', 'jq-masked-inputs']);

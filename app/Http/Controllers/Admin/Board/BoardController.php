@@ -25,7 +25,7 @@ class BoardController extends Controller
 
         return response()->json([
             'message' => trans('board.form.success'),
-            'redirectTo' => route('admin.boards')
+            'redirectTo' => route('admin.boards.index')
         ]);
     }
 
@@ -40,13 +40,13 @@ class BoardController extends Controller
 
         return response()->json([
             'message' => trans('board.form.success'),
-            'redirectTo' => route('admin.boards')
+            'redirectTo' => route('admin.boards.index')
         ]);
     }
 
     public function delete(Board $board)
     {
-        if (!$board->delete()) {
+        if (!services('board')->delete($board)) {
             return response()->json([
                 'message' => trans('board.form.delete_error')
             ], 422);

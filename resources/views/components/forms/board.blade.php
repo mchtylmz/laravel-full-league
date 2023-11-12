@@ -12,14 +12,14 @@
     </div>
     <div class="col-lg-12 mb-3">
         @if(!empty($board) && $board->photo)
-            <div class="mb-2" id="preview"><x-images.large src="{{ $board->photo->url }}" /></div>
+            <div class="mb-2" id="preview"><x-image type="large" src="{{ $board->photo->url }}" /></div>
         @endif
         <label class="form-label" for="photo">{{ __('board.table.photo') }}</label>
         <input type="file" class="form-control" id="photo" name="photo" data-toggle="preview" data-target="#preview" accept="image/jpeg,image/png,image/jpg">
     </div>
     <div class="col-lg-6 mb-3">
         <label class="form-label" for="sort">{{ __('board.table.sort') }}</label>
-        <input type="number" min="1" class="form-control" id="sort" name="sort" autocomplete="off" placeholder="{{ __('board.table.sort') }}" value="{{ $board->sort ?? '' }}" required>
+        <input type="number" min="1" max="99" class="form-control" id="sort" name="sort" autocomplete="off" placeholder="{{ __('board.table.sort') }}" value="{{ $board->sort ?? '' }}" required>
     </div>
     <div class="col-lg-6 mb-3">
         <label class="form-label" for="status">{{ __('board.table.status') }}</label>

@@ -39,14 +39,26 @@ class SidebarMenu
             [
                 'name' => 'boards',
                 'icon' => 'fa fa-th-large',
-                'route' => 'admin.boards', // route name
+                'route' => 'admin.boards.index', // route name
                 'title' => 'menu.sidebar.boards', // lang key
             ],
             [
                 'name' => 'boards_members',
                 'icon' => 'fa fa-users',
-                'route' => 'admin.boards.members', // route name
+                'route' => 'admin.boards.members.index', // route name
                 'title' => 'menu.sidebar.board_members', // lang key
+            ]
+        ];
+    }
+
+    public function settingsChilds(): array
+    {
+        return [
+            [
+                'name' => 'activity',
+                'icon' => 'fa fa-th-bug',
+                'route' => 'admin.settings.activity', // route name
+                'title' => 'menu.sidebar.activity', // lang key
             ]
         ];
     }
@@ -57,7 +69,7 @@ class SidebarMenu
             100 => [
                 'name' => 'posts',
                 'icon' => 'fa fa-newspaper',
-                'route' => 'admin.posts', // route name
+                'route' => 'admin.posts.index', // route name
                 'title' => 'menu.sidebar.posts', // lang key
                 'role' => 'admin', // role slug (,)
                 'childs' => $this->postsChilds()
@@ -66,7 +78,7 @@ class SidebarMenu
             110 => [
                 'name' => 'boards',
                 'icon' => 'fa fa-th-large',
-                'route' => 'admin.boards', // route name
+                'route' => 'admin.boards.index', // route name
                 'title' => 'menu.sidebar.boards', // lang key
                 'role' => 'admin', // role slug (,)
                 'childs' => $this->boardsChilds()
@@ -75,19 +87,19 @@ class SidebarMenu
             120 => [
                 'name' => 'sponsors',
                 'icon' => 'fa fa-leaf',
-                'route' => 'admin.sponsors', // route name
+                'route' => 'admin.sponsors.index', // route name
                 'title' => 'menu.sidebar.sponsors', // lang key
                 'role' => 'admin', // role slug (,)
                 'childs' => []
             ],
 
-            150 => [
-                'name' => 'activity',
-                'icon' => 'fa fa-chart-bar',
-                'route' => 'admin.activity', // route name
-                'title' => 'menu.sidebar.activity', // lang key
+            200 => [
+                'name' => 'settings',
+                'icon' => 'fa fa-cogs',
+                'route' => 'admin', // route name
+                'title' => 'menu.sidebar.settings', // lang key
                 'role' => 'admin', // role slug (,)
-                'childs' => []
+                'childs' => $this->settingsChilds()
             ],
         ]);
     }

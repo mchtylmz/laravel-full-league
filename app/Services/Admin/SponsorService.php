@@ -27,4 +27,9 @@ class SponsorService
 
         return $sponsor;
     }
+
+    public function delete(Sponsor $sponsor)
+    {
+        return $sponsor->delete();
+    }
 }

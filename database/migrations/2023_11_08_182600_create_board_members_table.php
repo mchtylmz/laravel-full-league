@@ -17,11 +17,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('surname');
             $table->unsignedBigInteger('upload_id')->nullable();
-            $table->string('mission_tr');
+            $table->string('mission_tr')->nullable();
             $table->string('mission_en')->nullable();
             $table->tinyInteger('grid')->default(12);
             $table->tinyInteger('sort')->default(0);
-            $table->tinyInteger('status')->default(\App\Enums\StatusEnum::PASSIVE);
+            $table->tinyInteger('status')->default(\App\Enums\StatusEnum::ARCHIVE);
             $table->timestamps();
 
             $table->foreign('board_id')->references('id')->on('boards')->onDelete('cascade');

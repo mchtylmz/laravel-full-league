@@ -12,6 +12,7 @@ return [
         'boards' => 'Kurullar',
         'board_members' => 'Kurul Üyeleri',
         'sponsors' => 'Sponsorlar',
-        'activity' => 'Sistem Günlüğü'
+        'settings' => 'Ayarlar',
+        'activity' => 'Sistem Günlüğü',
     ],
 ];

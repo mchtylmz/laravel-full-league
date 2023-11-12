@@ -11,7 +11,7 @@
             <div class="block-content">
                 <form action="{{ route('admin.sponsors.update', $sponsor->id) }}" method="POST" data-toggle="ajax">
                     @csrf
-                    @include('admin.sponsor.form', ['sponsor' => $sponsor])
+                    @include('components.forms.sponsor', ['sponsor' => $sponsor])
                     <div class="mb-3 text-center">
                         <button type="submit" class="btn btn-alt-primary px-5">
                             <i class="fa fa-save fw-bold mx-2"></i> {{ __('sponsor.form.create_submit') }}

@@ -51,4 +51,14 @@ class BoardService
 
         return $member;
     }
+
+    public function delete(Board $board)
+    {
+        return $board->delete();
+    }
+
+    public function memberDelete(BoardMember $boardMember)
+    {
+        return $boardMember->delete();
+    }
 }

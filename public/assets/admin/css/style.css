@@ -14,3 +14,6 @@
 .bootstrap-table .fixed-table-container .table thead th {
     background-color: #f6f7f9 !important;
 }
+.admin-logo {
+    height: 48px;
+}

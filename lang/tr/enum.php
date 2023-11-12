@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'tr' => 'Türkçe',
+    'en' => 'English',
+
     'status' => [
         'active' => 'Aktif',
         'passive' => 'Pasif',

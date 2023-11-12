@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('title_en')->nullable();
             $table->unsignedBigInteger('upload_id')->nullable();
             $table->tinyInteger('sort')->default(0);
-            $table->tinyInteger('status')->default(\App\Enums\StatusEnum::PASSIVE);
+            $table->tinyInteger('status')->default(\App\Enums\StatusEnum::ARCHIVE);
             $table->timestamps();
         });
     }

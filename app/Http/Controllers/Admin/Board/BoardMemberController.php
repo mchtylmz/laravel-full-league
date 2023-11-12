@@ -26,7 +26,7 @@ class BoardMemberController extends Controller
 
         return response()->json([
             'message' => trans('board.form.success'),
-            'redirectTo' => route('admin.boards.members')
+            'redirectTo' => route('admin.boards.members.index')
         ]);
     }
 
@@ -41,13 +41,13 @@ class BoardMemberController extends Controller
 
         return response()->json([
             'message' => trans('board.form.success'),
-            'redirectTo' => route('admin.boards.members')
+            'redirectTo' => route('admin.boards.members.index')
         ]);
     }
 
     public function delete(BoardMember $boardMember)
     {
-        if (!$boardMember->delete()) {
+        if (!services('board')->memberDelete($boardMember)) {
             return response()->json([
                 'message' => trans('board.form.delete_member_error')
             ], 422);
