@@ -43,7 +43,11 @@
                             submit.attr('disabled', true).append('<i class="mx-2 fa fa-spinner fa-pulse"></i>');
                         },
                         error: function (result) {
-                            toast.fire('', result.responseJSON.message, 'error');
+                            toast.fire({
+                                text: result.responseJSON.message,
+                                icon: 'error',
+                                timer: 50000
+                            });
                         },
                         success: function (response) {
                             toast.fire({

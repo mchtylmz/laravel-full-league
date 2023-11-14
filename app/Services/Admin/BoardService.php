@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Services\Admin;
+namespace App\Services\Admin;
 
 use App\Http\Requests\Admin\Board\StoreMemberRequest;
 use App\Http\Requests\Admin\Board\StoreRequest;

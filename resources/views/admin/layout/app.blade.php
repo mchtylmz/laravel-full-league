@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ assets()->admin('css/oneui.min.css') }}">
     <link rel="stylesheet" href="{{ assets()->admin('css/style.css') }}">
     @stack('styles')
+    @livewireStyles
 </head>
 <body>
 <div id="page-container" class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed main-content-full">
@@ -54,5 +55,6 @@ const lang = @php echo json_encode(trans('enum'), JSON_PRETTY_PRINT); @endphp;
     One.helpersOnLoad(['js-flatpickr', 'jq-select2', 'jq-masked-inputs']);
 </script>
 @stack('scripts')
+@livewireScripts
 </body>
 </html>

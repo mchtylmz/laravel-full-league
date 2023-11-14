@@ -36,7 +36,7 @@
     </div>
     <div class="col-lg-4 mb-3">
         <label class="form-label" for="grid">{{ __('board.table.grid') }}</label>
-        <select class="form-select" id="grid" name="grid" required>
+        <select class="js-select2 form-select" id="grid" name="grid" required>
             <option value="">{{ __('enum.choose') }}</option>
             @foreach(cases('grid') as $grid)
                 <option value="{{ $grid->value }}" @selected(!empty($member) && $member->grid->value == $grid->value)>{{ $grid->title() }}</option>
@@ -49,7 +49,7 @@
     </div>
     <div class="col-lg-4 mb-3">
         <label class="form-label" for="status">{{ __('board.table.status') }}</label>
-        <select class="form-select" id="status" name="status" required>
+        <select class="js-select2 form-select" id="status" name="status" required>
             <option value="">{{ __('enum.choose') }}</option>
             @foreach(cases('status') as $status)
                 <option value="{{ $status->value }}" @selected((!empty($member) && $member->status->value == $status->value) || (empty($member) && $status->value == 1))>{{ $status->title() }}</option>

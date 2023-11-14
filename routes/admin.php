@@ -13,6 +13,7 @@ use \App\Http\Controllers\Admin\Board\BoardController;
 use \App\Http\Controllers\Admin\Board\BoardMemberController;
 use \App\Http\Controllers\Admin\Sponsor\SponsorController;
 use \App\Http\Controllers\Admin\Post\PostController;
+use \App\Http\Controllers\Admin\Tools\ImageController;
 
 Route::middleware('guest')->group(function () {
     Route::get('login', [LoginController::class, 'index'])->name('login');
@@ -25,11 +26,16 @@ Route::middleware('auth')->group(function () {
     Route::post('profile/save', [ProfileController::class, 'save'])->name('profile.save');
     Route::post('profile/password', [ProfileController::class, 'password'])->name('profile.password.save');
 
+    // tools
+    Route::get('tools/images', [ImageController::class, 'index'])->name('tools.images');
+
     // middleware admin
     Route::middleware('role:admin')->group(function () {
         // posts
         Route::prefix('posts')->name('posts.')->group(function () {
             Route::get('', [PostController::class, 'index'])->name('index');
+            Route::get('create', [PostController::class, 'create'])->name('create');
+            Route::post('create', [PostController::class, 'store'])->name('create');
         });
 
         // boards & members

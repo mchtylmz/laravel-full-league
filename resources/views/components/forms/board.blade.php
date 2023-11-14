@@ -23,7 +23,7 @@
     </div>
     <div class="col-lg-6 mb-3">
         <label class="form-label" for="status">{{ __('board.table.status') }}</label>
-        <select class="form-select" id="status" name="status" required>
+        <select class="js-select2 form-select" id="status" name="status" required>
             <option value="">{{ __('enum.choose') }}</option>
             @foreach(cases('status') as $status)
                 <option value="{{ $status->value }}" @selected((!empty($board) && $board->status->value == $status->value) || (empty($board) && $status->value == 1))>{{ $status->title() }}</option>

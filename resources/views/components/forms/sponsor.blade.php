@@ -23,7 +23,7 @@
     </div>
     <div class="col-lg-4 mb-3">
         <label class="form-label" for="type">{{ __('sponsor.table.type') }}</label>
-        <select class="form-select" id="type" name="type" required>
+        <select class="js-select2 form-select" id="type" name="type" required>
             <option value="">{{ __('enum.choose') }}</option>
             <option value="left" @selected(!empty($sponsor) && $sponsor->type == 'left')>{{ __('enum.left') }}</option>
             <option value="right" @selected(!empty($sponsor) && $sponsor->type == 'right')>{{ __('enum.right') }}</option>
@@ -31,7 +31,7 @@
     </div>
     <div class="col-lg-4 mb-3">
         <label class="form-label" for="status">{{ __('sponsor.table.status') }}</label>
-        <select class="form-select" id="status" name="status" required>
+        <select class="js-select2 form-select" id="status" name="status" required>
             <option value="">{{ __('enum.choose') }}</option>
             @foreach(cases('status') as $status)
                 <option value="{{ $status->value }}" @selected((!empty($sponsor) && $sponsor->status->value == $status->value) || (empty($board) && $status->value == 1))>{{ $status->title() }}</option>
