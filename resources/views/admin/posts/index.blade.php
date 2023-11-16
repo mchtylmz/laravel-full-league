@@ -21,14 +21,23 @@
                     sass
                 </div>
 
-                <x-bootstrap-table route="{{ route('admin.boards.json') }}">
+                <x-bootstrap-table route="{{ route('admin.posts.json') }}">
                     <x-slot name="columns">
-                        <th data-field="sort" data-sortable="true" data-wdith="5%">{{ __('board.table.sort') }}</th>
-                        <th data-field="photo" data-formatter="setHtml">{{ __('board.table.photo') }}</th>
-                        <th data-field="title_tr">{{ __('board.table.title_tr') }}</th>
-                        <th data-field="title_en">{{ __('board.table.title_en') }}</th>
-                        <th data-field="members_count" data-sortable="true">{{ __('board.table.members_count') }}</th>
-                        <th data-field="status" data-sortable="true" data-formatter="setHtml">{{ __('board.table.status') }}</th>
+                        <th data-field="sort" data-sortable="true" data-width="5%">
+                            {{ __('post.table.sort') }}
+                        </th>
+                        <th data-field="photo" data-formatter="setHtml">
+                            {{ __('post.table.photo') }}
+                        </th>
+                        <th data-field="title" data-width="20%" data-align="left">
+                            {{ __('post.table.title') }}
+                        </th>
+                        <th data-field="published_at" data-sortable="true" data-formatter="setText">
+                            {{ __('post.table.published_at') }}
+                        </th>
+                        <th data-field="status" data-sortable="true" data-formatter="setHtml">
+                            {{ __('board.table.status') }}
+                        </th>
                         <th data-field="id" data-formatter="setActions">{{ __('board.table.actions') }}</th>
                     </x-slot>
                 </x-bootstrap-table>

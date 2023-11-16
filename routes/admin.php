@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Board;
 use App\Models\BoardMember;
 use App\Models\Sponsor;
+use App\Models\Post;
 
 use \App\Http\Controllers\Admin\Auth\LoginController;
 use \App\Http\Controllers\Admin\Auth\LogoutController;
@@ -14,6 +15,7 @@ use \App\Http\Controllers\Admin\Board\BoardMemberController;
 use \App\Http\Controllers\Admin\Sponsor\SponsorController;
 use \App\Http\Controllers\Admin\Post\PostController;
 use \App\Http\Controllers\Admin\Tools\ImageController;
+use \App\Http\Controllers\Admin\Tools\FileController;
 
 Route::middleware('guest')->group(function () {
     Route::get('login', [LoginController::class, 'index'])->name('login');
@@ -26,9 +28,6 @@ Route::middleware('auth')->group(function () {
     Route::post('profile/save', [ProfileController::class, 'save'])->name('profile.save');
     Route::post('profile/password', [ProfileController::class, 'password'])->name('profile.password.save');
 
-    // tools
-    Route::get('tools/images', [ImageController::class, 'index'])->name('tools.images');
-
     // middleware admin
     Route::middleware('role:admin')->group(function () {
         // posts
@@ -36,6 +35,10 @@ Route::middleware('auth')->group(function () {
             Route::get('', [PostController::class, 'index'])->name('index');
             Route::get('create', [PostController::class, 'create'])->name('create');
             Route::post('create', [PostController::class, 'store'])->name('create');
+            Route::get('update/{post:id}', [PostController::class, 'update'])->name('update');
+            Route::post('update/{post:id}', [PostController::class, 'save'])->name('update');
+            Route::delete('delete/{post:id}', [PostController::class, 'delete'])->name('delete');
+            Route::get('json', [PostController::class, 'json'])->name('json');
         });
 
         // boards & members
@@ -75,7 +78,8 @@ Route::middleware('auth')->group(function () {
         // settings
         Route::redirect('activity', 'user-activity')->name('settings.activity');
         Route::prefix('settings')->name('settings.')->group(function () {
-
+            Route::get('files', [FileController::class, 'index'])->name('files');
+            Route::get('files/json', [FileController::class, 'json'])->name('files.json');
         });
 
     });

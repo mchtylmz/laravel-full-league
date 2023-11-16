@@ -14,6 +14,15 @@
 .bootstrap-table .fixed-table-container .table thead th {
     background-color: #f6f7f9 !important;
 }
+.bootstrap-table .table tbody tr:hover,
+.table-hover>tbody>tr:hover>* {
+    --bs-table-bg-state: rgba(235, 238, 242, 0.15) !important;
+}
 .admin-logo {
     height: 48px;
+}
+.bootstrap-table .fixed-table-container .table tbody tr .card-view {
+    align-items: center;
+    gap: 3px !important;
+    margin: 9px !important;
 }

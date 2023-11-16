@@ -14,6 +14,8 @@ if (!function_exists('services')) {
             'auth' => new \App\Services\Admin\AuthService(),
             'board' => new \App\Services\Admin\BoardService(),
             'sponsor' => new \App\Services\Admin\SponsorService(),
+            'post' => new \App\Services\Admin\PostService(),
+            'tool' => new \App\Services\Admin\ToolService(),
         };
     }
 }
@@ -37,6 +39,8 @@ if (!function_exists('repositories')) {
             'boardMembers' => new \App\Repositories\Admin\Board\BoardMemberRepository(),
             'sponsor' => new \App\Repositories\Admin\Sponsor\SponsorRepository(),
             'post' => new \App\Repositories\Admin\Post\PostRepository(),
+            'season' => new \App\Repositories\Admin\Season\SeasonRepository(),
+            'file' => new \App\Repositories\Admin\Tool\FileRepository(),
         };
     }
 }
@@ -57,3 +61,10 @@ if (!function_exists('menus')) {
     }
 }
 
+if (!function_exists('localeDate')) {
+    function localeDate(string $datetime, $format = 'j F Y')
+    {
+        \Carbon\Carbon::setLocale(app()->getLocale());
+        return \Carbon\Carbon::parse($datetime)->translatedFormat($format);
+    }
+}

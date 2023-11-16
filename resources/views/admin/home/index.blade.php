@@ -15,11 +15,7 @@
         <br>
 
     @endforeach
-zxc
 
-    <div class="p-5">
-        @livewire('counter')
-    </div>
 
 
 @endsection

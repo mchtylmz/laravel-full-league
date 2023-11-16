@@ -4,6 +4,7 @@ return [
     'title' => 'Haberler',
 
     'create' => 'Yeni Haber Ekle',
+    'delete' => 'Haber siliniyor, işleme devam edilsin mi?',
 
     'form' => [
         'create_submit' => 'Kaydet & Yayınla',
@@ -29,6 +30,6 @@ return [
         'sort' => 'Sıra',
         'status' => 'Durum',
         'lang' => 'Haber Dili',
-        'published_at' => 'Yayın Tarih/Saati',
+        'published_at' => 'Yayın Zamanı',
     ]
 ];

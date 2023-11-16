@@ -13,6 +13,8 @@ return [
         'board_members' => 'Kurul Üyeleri',
         'sponsors' => 'Sponsorlar',
         'settings' => 'Ayarlar',
+        'files' => 'Dosyalar / Resimler',
+        'upload' => 'Dosya Yükle',
         'activity' => 'Sistem Günlüğü',
     ],
 ];

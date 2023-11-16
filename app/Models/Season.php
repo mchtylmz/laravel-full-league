@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Scopes\StatusScope;
 use Haruncpi\LaravelUserActivity\Traits\Loggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Season extends Model
 {
-    use HasFactory, Loggable;
+    use HasFactory, Loggable, StatusScope;
 
     protected $fillable = [
         'name',

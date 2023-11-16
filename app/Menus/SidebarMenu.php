@@ -61,6 +61,12 @@ class SidebarMenu
                 'title' => 'menu.sidebar.post_types', // lang key
             ],
             [
+                'name' => 'files',
+                'icon' => 'fa fa-files',
+                'route' => 'admin.settings.files', // route name
+                'title' => 'menu.sidebar.files', // lang key
+            ],
+            [
                 'name' => 'activity',
                 'icon' => 'fa fa-th-bug',
                 'route' => 'admin.settings.activity', // route name

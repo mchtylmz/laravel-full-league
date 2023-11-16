@@ -30,6 +30,10 @@
                         action = $(form).attr('action'),
                         method = $(form).attr('method');
 
+                    if (typeof tinymce !== undefined) {
+                        tinymce.triggerSave();
+                    }
+
                     $.ajax({
                         type: method,
                         url: action,
@@ -170,4 +174,3 @@
     }
     One.onLoad(() => Main.init());
 })();
-

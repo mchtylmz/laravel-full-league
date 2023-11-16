@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\GridEnum;
 use App\Enums\StatusEnum;
+use App\Traits\HasPhotoBelongsTrait;
 use Haruncpi\LaravelUserActivity\Traits\Loggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -11,7 +12,7 @@ use Pharaonic\Laravel\Uploader\Upload;
 
 class BoardMember extends Model
 {
-    use HasFactory, Loggable;
+    use HasFactory, Loggable, HasPhotoBelongsTrait;
 
     protected $fillable = [
         'board_id',
@@ -33,10 +34,5 @@ class BoardMember extends Model
     public function board()
     {
         return $this->belongsTo(Board::class);
-    }
-
-    public function photo()
-    {
-        return $this->belongsTo(Upload::class, 'upload_id');
     }
 }

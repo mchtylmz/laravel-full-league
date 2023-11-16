@@ -17,6 +17,15 @@ return [
 
     'delete' => 'İlgili içerik silinecektir, işleme devam edilsin mi?',
 
+    'button' => [
+        'edit' => 'Düzenle',
+        'view' => 'Görüntüle',
+        'actions' => 'İşlemler',
+        'delete' => 'Sil / Kaldır',
+        'images' => 'Resim / Foto',
+        'files' => 'Dosyalar'
+    ],
+
     'toast' => [
         'ok' => 'Tamam',
         'delete' => 'Sil',

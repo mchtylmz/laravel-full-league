@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('brief')->nullable();
             $table->text('content')->nullable();
-            $table->unsignedBigInteger('upload_id');
+            $table->unsignedBigInteger('upload_id')->nullable();
             $table->tinyInteger('single')->default(0);
             $table->tinyInteger('home')->default(0);
             $table->integer('sort')->default(1);
