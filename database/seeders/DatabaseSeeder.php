@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -12,18 +14,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::create([
-            'name' => 'Admin',
-            'username' => 'admin',
-            'email' => 'admin@admin.com',
-            'password' => Hash::make('123456')
-        ]);
-        \App\Models\Role::create([
-            'name' => 'Admin'
+        // User::factory(10)->create();
+
+        User::factory()->create([
+            'username' => 'test@example.com',
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+            'password' => Hash::make('12345')
         ]);
 
-        $user = \App\Models\User::find(1);
-        $role = \App\Models\Role::where('slug', 'admin')->first();
-        $user->roles()->attach($role);
+
+        settings()->set([
+            'siteTitle' => 'Football',
+            'siteFavicon' => 'uploads/logo.png',
+            'siteLogo' => 'uploads/logo.png',
+        ]);
+        settings()->save();
     }
 }
