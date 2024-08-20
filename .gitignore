@@ -18,3 +18,11 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+.sql
+.sqlite
+.zip
+.rar
+.gz
+/public/uploads
+/uploads/*

@@ -8,3 +8,10 @@ Route::get('logout', [\App\Http\Controllers\Dashboard\Auth\LogoutController::cla
 AutoRoute::auto('', \App\Http\Controllers\Dashboard\HomeController::class, [
     'name' => 'home'
 ]);
+
+AutoRoute::auto('news', \App\Http\Controllers\Dashboard\NewsController::class, [
+    'name' => 'news'
+]);
+
+Route::get('settings', [\App\Http\Controllers\Dashboard\SettingController::class, 'index'])
+    ->name('settings');

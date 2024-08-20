@@ -8,8 +8,13 @@
                     <span class="input-group-text border-0">
                         <i class="fa fa-fw fa-user opacity-50"></i>
                     </span>
-                    <input type="text" class="form-control form-control-lg form-control-alt" id="username"
-                           wire:model.live="username" placeholder="{{ __('Kullanıcı Adı') }}" autocomplete="off" required>
+                    <input type="text"
+                           class="form-control form-control-lg form-control-alt"
+                           id="username"
+                           wire:model.live="username"
+                           placeholder="{{ __('Kullanıcı Adı') }}"
+                           autocomplete="off"
+                           required>
                     @error('username')
                     <div class="invalid-tooltip d-block">{{ $message }}</div>
                     @enderror
@@ -20,7 +25,13 @@
                 <span class="input-group-text border-0">
                     <i class="fa fa-fw fa-key opacity-50"></i>
                 </span>
-                <input :type="show ? 'text' : 'password'" class="form-control form-control-lg form-control-alt" id="password" wire:model.live="password" placeholder="{{ __('Parola') }} ****" autocomplete="off" required>
+                <input :type="show ? 'text' : 'password'"
+                       class="form-control form-control-lg form-control-alt"
+                       id="password"
+                       wire:model.live="password"
+                       placeholder="{{ __('Parola') }} ****"
+                       autocomplete="off"
+                       required>
                 <button type="button" class="btn btn-secondary" @click="show = !show">
                     <i :class="{'fa fa-fw fa-eye-slash': !show, 'fa fa-fw fa-eye': show }"></i>
                 </button>
@@ -32,8 +43,10 @@
 
         <div class="row justify-content-center">
             <div class="col-lg-6 col-xxl-5">
-                <button type="submit" class="btn w-100 btn-alt-primary mb-3">
-                    <i class="fa fa-fw fa-sign-in-alt me-1 opacity-50"></i> {{ __('Giriş Yap') }}
+                <button type="submit" class="btn w-100 btn-alt-primary mb-3" wire:loading.attr="disabled">
+                    <div wire:loading.remove>
+                        <i class="fa fa-fw fa-sign-in-alt me-1 opacity-50"></i> {{ __('Giriş Yap') }}
+                    </div>
 
                     <div wire:loading>
                         <i class="fa fa-fw fa-spinner fa-pulse" style="animation-duration: 0.6s"></i>

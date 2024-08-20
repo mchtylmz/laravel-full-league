@@ -31,13 +31,19 @@ class AppServiceProvider extends ServiceProvider
 
         Facades\View::composer('*', function (View $view) {
 
-            $view->with('siteTitle', settings()->siteTitle);
-            $view->with('siteFavicon', settings()->siteFavicon);
-            $view->with('siteLogo', settings()->siteLogo);
+            $view->with('siteTitle', settings()->siteTitle ?? '');
+            $view->with('siteFavicon', settings()->siteFavicon ?? 'uploads/logo.png');
+            $view->with('siteLogo', settings()->siteLogo ?? 'uploads/logo.png');
+
         });
 
         Carbon::setLocale(app()->getLocale());
 
         Paginator::useBootstrapFive();
+
+        if (app()->environment('production')) {
+            Facades\URL::forceScheme('https');
+            $this->app['request']->server->set('HTTPS', 'on');
+        }
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
+use App\Models\News;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -23,6 +25,16 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('12345')
         ]);
 
+        $category = Category::create([
+            'slug' => 'category',
+            'name' => 'category'
+        ]);
+
+        News::create([
+            'slug' => 'slug',
+            'category_id' => $category->id,
+            'title' => 'title'
+        ]);
 
         settings()->set([
             'siteTitle' => 'Football',

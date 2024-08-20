@@ -287,8 +287,8 @@
                 showDenyButton: false,
                 showCancelButton: false,
                 showCloseButton: true,
-                confirmButtonText: window.lang['ok'],
-                cancelButtonText: window.lang['cancel'],
+                confirmButtonText: window.lang !== undefined ? window.lang['ok'] : 'Tamam',
+                cancelButtonText: window.lang !== undefined ? window.lang['cancel'] : 'Vazgeç',
                 timer: 5000,
                 timerProgressBar: true
             });

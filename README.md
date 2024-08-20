@@ -196,4 +196,14 @@ $user->assignRole(['writer', 'admin']);
 Route::group(['middleware' => ['can:publish articles']], function () { ... });
 Route::group(['middleware' => ['role:manager']], function () { ... });
 ```
+----
+```
+composer require rappasoft/laravel-livewire-tables
+```
+You must also have Alpine.js version 3 or greater installed and available to the component.
+- [Documentation] https://rappasoft.com/docs/laravel-livewire-tables/v3/introduction
+----
+```
+https://blade-ui-kit.com/blade-icons
+```
 

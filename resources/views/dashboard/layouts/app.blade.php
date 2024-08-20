@@ -16,23 +16,24 @@
 
     <!-- Stylesheets -->
     <!-- Page JS Plugins CSS -->
-    <link rel="stylesheet" href="{{ asset('dashboard/assets/js/plugins/sweetalert2/sweetalert2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('dashboard/assets/js/plugins/dropify/dist/css/dropify.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('dashboard/assets/js/plugins/flatpickr/flatpickr.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('dashboard/assets/js/plugins/bootstrap-select/dist/css/bootstrap-select.css') }}" />
+    <link rel="stylesheet" href="{{ dashboard_asset('assets/js/plugins/sweetalert2/sweetalert2.min.css') }}">
+    <link rel="stylesheet" href="{{ dashboard_asset('assets/js/plugins/dropify/dist/css/dropify.min.css') }}">
+    <link rel="stylesheet" href="{{ dashboard_asset('assets/js/plugins/flatpickr/flatpickr.min.css') }}">
+    <link rel="stylesheet" href="{{ dashboard_asset('assets/js/plugins/bootstrap-select/dist/css/bootstrap-select.css') }}" />
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" id="css-main" href="{{ asset('dashboard/assets/css/oneui.min.css') }}">
-
-    <link rel="stylesheet" id="css-main" href="{{ asset('dashboard/assets/css/style.css') }}?v={{ config('dashboard.version') }}">
+    <link rel="stylesheet" id="css-main" href="{{ dashboard_asset('assets/css/oneui.min.css') }}">
+    <link rel="stylesheet" id="css-main" href="{{ dashboard_asset('assets/css/style.css') }}?v={{ config('dashboard.version') }}">
     <style>
         .nav-link.active {
             background-color: #2356d7 !important;
             color: #FFF !important;
         }
+        [x-cloak] { display: none !important; }
     </style>
-    @stack('css')
+
     @livewireStyles
+    @stack('css')
 </head>
 <body>
 <div id="page-container" class="page-header-light main-content-full">
@@ -53,12 +54,12 @@
             <!-- END Left Section -->
 
             <div class="d-none d-sm-flex align-items-center">
-                @include('dashboard.layouts.menu')
+                @includeIf('dashboard.layouts.menu')
             </div>
 
             <!-- Right Section -->
             <div class="d-flex align-items-center">
-                @include('dashboard.layouts.user-menu')
+                @includeIf('dashboard.layouts.user-menu')
             </div>
             <!-- END Right Section -->
         </div>
@@ -79,7 +80,7 @@
 
     <!-- Main Container -->
     <main id="main-container">
-        @include('dashboard.layouts.menu', ['mobile' => true])
+        @includeIf('dashboard.layouts.menu', ['mobile' => true])
 
         <!-- Page Content -->
         <div class="content pt-3">
@@ -95,7 +96,7 @@
         <div class="content py-3">
             <div class="row fs-sm">
                 <div class="col-sm-12 py-0 text-center">
-                    {{ $siteTitle  }} &copy; 2024
+                    {{ $siteTitle  }} &copy; {{ now()->year }}
                 </div>
             </div>
         </div>
@@ -124,6 +125,19 @@
 @livewireScripts
 <x-livewire-alert::scripts />
 @stack('js')
+
+<script>
+    Livewire.hook('element.init', ({ component, el }) => {
+        console.log(component.name, el.value);
+        $('.dropify').dropify();
+        $('.selectpicker').selectpicker('Ankara');
+
+
+        if (component.name === "your_component_name") { //component.name is products.show in my case
+            // code..
+        }
+    })
+</script>
 
 </body>
 </html>
