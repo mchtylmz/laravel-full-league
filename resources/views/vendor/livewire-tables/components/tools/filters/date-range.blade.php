@@ -11,6 +11,7 @@
         ])
     >
         <input
+            autocomplete="off"
             type="text"
             x-ref="dateRangeInput"
             x-on:click="init"
@@ -22,6 +23,6 @@
                 'd-inline-block w-100 form-control' => $isBootstrap,
             ])
             @if($filter->hasConfig('placeholder')) placeholder="{{ $filter->getConfig('placeholder') }}" @endif
-        />     
+        />
     </div>
 </div>

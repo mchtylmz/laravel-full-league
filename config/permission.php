@@ -24,7 +24,7 @@ return [
          * `Spatie\Permission\Contracts\Role` contract.
          */
 
-        'role' => Spatie\Permission\Models\Role::class,
+        'role' => App\Models\Role::class,
 
     ],
 
@@ -85,7 +85,6 @@ return [
          * For example, this would be nice if your primary keys are all UUIDs. In
          * that case, name this `model_uuid`.
          */
-
         'model_morph_key' => 'model_id',
 
         /*
@@ -167,7 +166,7 @@ return [
          * When permissions or roles are updated the cache is flushed automatically.
          */
 
-        'expiration_time' => \DateInterval::createFromDateString('96 hours'),
+        'expiration_time' => \DateInterval::createFromDateString('24 hours'),
 
         /*
          * The cache key used to store all permissions.

@@ -3,7 +3,7 @@
 
 <div x-cloak x-show="filtersOpen"
     @class([
-        'container-fluid border py-3 mb-3' => $this->isBootstrap,
+        'container-fluid border py-3 mb-3 bg-body-light' => $this->isBootstrap,
     ])
     @if($this->isTailwind)
     x-transition:enter="transition ease-out duration-100"

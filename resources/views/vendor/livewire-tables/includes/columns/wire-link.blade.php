@@ -1,4 +1,4 @@
-<button 
+<button
     {!! count($attributes) ? $column->arrayToAttributes($attributes) : '' !!}
     @if($column->hasConfirmMessage())
         wire:confirm="{{ $column->getConfirmMessage() }}"
@@ -6,4 +6,4 @@
     @if($column->hasActionCallback())
         wire:click="{{ $path }}"
     @endif
->{{ $title }}</button>
+>{!! $title !!}</button>

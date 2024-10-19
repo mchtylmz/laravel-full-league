@@ -59,6 +59,7 @@
         $attributes->merge($customAttributes)
             ->class(['' => $customAttributes['default'] ?? true])
             ->class(['bg-light' => true])
+            ->class([$column->getFrom()])
             ->class(['d-none' => $column->shouldCollapseAlways()])
             ->class(['d-none d-md-table-cell' => $column->shouldCollapseOnMobile()])
             ->class(['d-none d-lg-table-cell' => $column->shouldCollapseOnTablet()])

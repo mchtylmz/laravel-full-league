@@ -1,28 +1,23 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Buki\AutoRoute\Facades\Route as AutoRoute;
 
-// site
-Route::middleware('web')
-    ->name('site.')
-    ->group(base_path('routes/site.php'));
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
 
+/* ***************************************** */
+// backend and frontend login
+Route::middleware('guest')
+    ->controller(\App\Http\Controllers\Backend\Auth\LoginController::class)
+    ->prefix(config('backend.prefix'))
+    ->group(function () {
+        Route::get('/login', 'index')->name('login');
+        Route::post('/login', 'store')->name('login');
+    });
 
-// dashboard =->guest
-Route::middleware('web')
-    ->prefix(config('dashboard.prefix'))
-    ->group(base_path('routes/dashboard/guest.php'));
-
-
-// dashboard =->auth
-Route::middleware('auth')
-    ->name('dashboard.')
-    ->prefix(config('dashboard.prefix'))
-    ->group(base_path('routes/dashboard/auth.php'));
-
-
-// 404
-Route::fallback(function () {
-    return redirect()->to('/');
-});
+// backend
+Route::name('admin.')
+    ->middleware(['auth', 'can:dashboard:access'])
+    ->prefix(config('backend.prefix'))
+    ->group(base_path('routes/backend.php'));

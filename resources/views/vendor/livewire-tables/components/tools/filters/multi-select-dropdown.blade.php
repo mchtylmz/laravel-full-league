@@ -27,11 +27,14 @@
             </select>
         </div>
     @elseif ($isBootstrap)
+        <div wire:ignore>
         <select multiple
             {{ $filter->getWireMethod("filterComponents.".$filter->getKey()) }}
             wire:key="{{ $filter->generateWireKey($tableName, 'multiselectdropdown') }}"
             id="{{ $tableName }}-filter-{{ $filter->getKey() }}@if($filter->hasCustomPosition())-{{ $filter->getCustomPosition() }}@endif"
-            class="{{ $isBootstrap4 ? 'form-control' : 'form-select' }}"
+            class="{{ $isBootstrap4 ? 'form-control' : 'form-control selectpicker' }}"
+                data-live-search="true"
+                data-size="10"
         >
         @if ($filter->getFirstOption() != "")
             <option @if($filter->isEmpty($this)) selected @endif value="all">{{ $filter->getFirstOption()}}</option>
@@ -48,5 +51,6 @@
                 @endif
             @endforeach
         </select>
+        </div>
     @endif
 </div>

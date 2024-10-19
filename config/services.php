@@ -35,13 +35,4 @@ return [
         ],
     ],
 
-    'recaptcha' => [
-        'enabled' => env('GOOGLE_RECAPTCHA', false),
-        'site_key' => env('GOOGLE_RECAPTCHA_SITE_KEY'),
-        'secret_key' => env('GOOGLE_RECAPTCHA_SECRET_KEY'),
-        'version' => 'v2',
-        'size' => 'invisible', // 'normal', 'compact' or 'invisible'.
-        'theme' => 'light', // 'light' or 'dark'.
-    ],
-
 ];

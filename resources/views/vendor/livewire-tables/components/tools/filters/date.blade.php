@@ -7,7 +7,7 @@
         <input {{ $filter->getWireMethod("filterComponents.".$filter->getKey()) }}
             wire:key="{{ $filter->generateWireKey($tableName, 'date') }}"
             id="{{ $tableName }}-filter-{{ $filter->getKey() }}@if($filter->hasCustomPosition())-{{ $filter->getCustomPosition() }}@endif"
-            type="date"
+            type="date" autocomplete="off"
             @if($filter->hasConfig('min')) min="{{ $filter->getConfig('min') }}" @endif
             @if($filter->hasConfig('max')) max="{{ $filter->getConfig('max') }}" @endif
             @if($filter->hasConfig('placeholder')) placeholder="{{ $filter->getConfig('placeholder') }}" @endif

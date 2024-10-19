@@ -12,18 +12,24 @@
             @include($this->getConfigurableAreaFor('before-tools'), $this->getParametersForConfigurableArea('before-tools'))
         @endif
 
-        <x-livewire-tables::tools>
+        <div class="row">
+            <div class="col-lg-7">
+            @if($this->showFilterPillsSection)
+                    <x-livewire-tables::tools.filter-pills />
+            @endif
+            </div>
+            <div class="col-lg-5">
             @if ($this->showSortPillsSection)
                 <x-livewire-tables::tools.sorting-pills />
             @endif
-            @if($this->showFilterPillsSection)
-                <x-livewire-tables::tools.filter-pills />
-            @endif
+            </div>
+        </div>
+
+        <x-livewire-tables::tools>
             <x-livewire-tables::tools.toolbar />
         </x-livewire-tables::tools>
-
         <x-livewire-tables::table>
-            
+
             <x-slot name="thead">
                 @if($this->getCurrentlyReorderingStatus)
                     <x-livewire-tables::table.th.reorder x-cloak x-show="currentlyReorderingStatus" />
@@ -47,7 +53,6 @@
                 <x-livewire-tables::includes.loading colCount="{{ $this->columns->count()+1 }}" />
             @endif
 
-
             @if($this->showBulkActionsSections)
                 <x-livewire-tables::table.tr.bulk-actions  :displayMinimisedOnReorder="true" />
             @endif
@@ -66,7 +71,7 @@
 
                     @foreach($this->selectedVisibleColumns as $colIndex => $column)
                         <x-livewire-tables::table.td wire:key="{{ $tableName . '-' . $row->{$primaryKey} . '-datatable-td-' . $column->getSlug() }}"  :column="$column" :colIndex="$colIndex">
-                            @if($column->isHtml())                            
+                            @if($column->isHtml())
                                 {!! $column->renderContents($row) !!}
                             @else
                                 {{ $column->renderContents($row) }}

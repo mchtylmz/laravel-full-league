@@ -2,54 +2,60 @@
 
 namespace App\Livewire\Auth;
 
-use App\Traits\AlertTrait;
-use Illuminate\Support\Facades\Auth;
+use App\Actions\Auth\LoginAction;
+use App\Traits\CustomLivewireAlert;
 use Livewire\Component;
-use Livewire\Attributes\Validate;
 
 class Login extends Component
 {
-    use AlertTrait;
+    use CustomLivewireAlert;
 
-    #[Validate('required|min:3')]
-    public string $username = '';
+    public string $username;
+    public string $password;
+    public bool $remember = false;
 
-    #[Validate('required|min:3')]
-    public string $password = '';
+    public string $passwordInputType = 'password';
+
+    public function changeType(): void
+    {
+        $this->passwordInputType = $this->passwordInputType == 'text' ? 'password' : 'text';
+    }
+
+    public function rules(): array
+    {
+        return [
+            'username' => 'required|string|min:3',
+            'password' => 'required|string|min:3',
+        ];
+    }
 
     public function validationAttributes(): array
     {
         return [
-            'username' => __('Kullanıcı Adı'),
-            'password' => __('Parola'),
+            'username' => __('Kullanıcı adı'),
+            'password' => __('Parola')
         ];
     }
 
-    public function submit()
+    public function login()
     {
         $this->validate();
 
-        if ($this->login()) {
-            return redirect()->route('dashboard.home.index');
+        $isLogin = LoginAction::run(
+            username: $this->username,
+            password: $this->password,
+            remember: $this->remember
+        );
+        if (!$isLogin) {
+            $this->message(__('Kullanıcı adı / parola hatalı!'))->error();
+            return false;
         }
 
-        $this->alertError(__('Kullanıcı adı / Parola hatalı!'));
-        return false;
+        return redirect()->route('admin.home.index');
     }
 
     public function render()
     {
-        return view('livewire.auth.login');
-    }
-
-    protected function login()
-    {
-        $credentials = [
-            'username' => $this->username,
-            'password' => $this->password,
-            'status'   => 'active'
-        ];
-
-        return Auth::attempt($credentials, true);
+        return view('livewire.backend.auth.login');
     }
 }

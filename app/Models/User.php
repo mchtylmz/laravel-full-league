@@ -2,32 +2,41 @@
 
 namespace App\Models;
 
-use App\Traits\CastTrait;
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Enums\StatusEnum;
+use App\Traits\Scope\RoleScopeTrait;
+use App\Traits\Scope\StatusScopeTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+use Zoha\Metable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasRoles, CastTrait;
+    use HasFactory, Notifiable, HasRoles, softDeletes, StatusScopeTrait, RoleScopeTrait, Metable;
 
-    /**
-     * @var string[]
-     */
-    public $guarded = [
-        'id',
-        'created_at',
-        'updated_at'
+    protected $guarded = [
+        'created_at', 'updated_at', 'deleted_at'
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
+
+
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
+            'deleted_at' => 'datetime',
+            'password' => 'hashed',
+            'status' => StatusEnum::class
+        ];
+    }
 }
