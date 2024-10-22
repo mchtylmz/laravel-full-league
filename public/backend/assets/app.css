@@ -157,3 +157,6 @@ th.created_at {
 .dark-mode .bg-light {
     background-color: #171e28 !important;
 }
+.nav-main-submenu {
+    padding-left: 2rem !important;
+}

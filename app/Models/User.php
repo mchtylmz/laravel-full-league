@@ -4,8 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Enums\StatusEnum;
-use App\Traits\Scope\RoleScopeTrait;
-use App\Traits\Scope\StatusScopeTrait;
+use App\Traits\Scope\RoleScope;
+use App\Traits\Scope\StatusScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -16,7 +16,7 @@ use Zoha\Metable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasRoles, softDeletes, StatusScopeTrait, RoleScopeTrait, Metable;
+    use HasFactory, Notifiable, HasRoles, softDeletes, StatusScope, RoleScope, Metable;
 
     protected $guarded = [
         'created_at', 'updated_at', 'deleted_at'

@@ -11,19 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('blogs', function (Blueprint $table) {
+        Schema::create('news', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('season_id')->index();
             $table->unsignedBigInteger('category_id')->index();
+            $table->string('lang', 5)->default(\App\Enums\LocaleEnum::TR);
             $table->string('title');
             $table->string('slug')->unique();
-            $table->text('brief');
+            $table->string('brief')->default('');
             $table->longText('content');
             $table->string('image');
-            $table->text('galleries')->nullable();
             $table->unsignedBigInteger('hits')->default(0);
-            $table->unsignedBigInteger('owner_id')->index();
-            $table->string('status')->default(\App\Enums\StatusEnum::ACTIVE);
             $table->string('keywords')->nullable();
+            $table->unsignedBigInteger('owner_id')->index();
+            $table->tinyInteger('show_homepage')->default(\App\Enums\YesNoEnum::NO);
+            $table->string('status')->default(\App\Enums\StatusEnum::ACTIVE);
+            $table->string('source')->nullable();
             $table->timestamp('published_at');
             $table->timestamps();
             $table->softDeletes();
@@ -35,6 +38,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('blogs');
+        Schema::dropIfExists('news');
     }
 };

@@ -87,9 +87,10 @@
             // dark-mode
             jQuery(document).on('click', '[data-action="dark_mode_toggle"]', function (e) {
                 e.preventDefault();
-                let darkMode = !localStorage.getItem('oneuiDarkMode');
+
+                let darkMode = !sessionStorage.getItem('oneuiDarkMode');
                 sessionStorage.setItem('oneuiDarkMode', darkMode);
-                Livewire.dispatch('runEvent', {event: 'darkMode', data: darkMode})
+                Livewire.dispatch('runEvent', {event: 'darkMode', data: darkMode});
             });
 
             $.fn.loading = function (status) {

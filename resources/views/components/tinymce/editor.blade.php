@@ -18,6 +18,7 @@
     id="editor{{ $id }}"
     class="form-control tinymce"
     name="{{ $name }}"
+    wire:model="{{ $name }}"
     placeholder="{{ $placeholder }}"
 >{!! $value !!}</textarea>
 
@@ -41,6 +42,7 @@
             autosave_ask_before_unload: true,
             autosave_interval: '1s',
             image_caption: true,
+            forced_root_block: false,
             plugins: [
                 'advlist', 'anchor', 'autolink',
                 'image', 'lists', 'link', 'media', 'preview',
@@ -51,8 +53,11 @@
             automatic_uploads: true,
             file_picker_types: 'image',
             setup: function (editor) {
-                editor.on('change', function () {
-                    tinymce.triggerSave();
+                editor.on('init change', function () {
+                    editor.save();
+                });
+                editor.on('keypress', function (e) {
+                    @this.set('{{ $name }}', editor.getContent());
                 });
             },
             file_picker_callback: (cb, value, meta) => {

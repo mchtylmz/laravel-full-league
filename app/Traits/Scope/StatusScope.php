@@ -6,7 +6,7 @@ use App\Enums\ApproveStatusEnum;
 use App\Enums\StatusEnum;
 use Illuminate\Database\Eloquent\Builder;
 
-trait StatusScopeTrait
+trait StatusScope
 {
     public function scopeActive(Builder $query): void
     {

@@ -1,5 +1,6 @@
 <!-- START Page Container -->
-<div id="page-container" class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed side-trans-enabled">
+<div id="page-container"
+     class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed side-trans-enabled {{ user()->getMeta('darkMode', 0) ? 'page-header-dark dark-mode' : ''}}">
     <div id="page-loader" class="show"></div>
 
     <nav id="sidebar" aria-label="Main Navigation">

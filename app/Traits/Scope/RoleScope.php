@@ -5,7 +5,7 @@ namespace App\Traits\Scope;
 use App\Enums\StatusEnum;
 use Illuminate\Database\Eloquent\Builder;
 
-trait RoleScopeTrait
+trait RoleScope
 {
     public function scopeAdmin(Builder $query): void
     {

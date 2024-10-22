@@ -18,6 +18,6 @@ Route::middleware('guest')
 
 // backend
 Route::name('admin.')
-    ->middleware(['auth', 'can:dashboard:access'])
+    ->middleware(['auth', 'can:admin:access'])
     ->prefix(config('backend.prefix'))
     ->group(base_path('routes/backend.php'));

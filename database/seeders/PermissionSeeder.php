@@ -20,10 +20,26 @@ class PermissionSeeder extends Seeder
             ['name' => 'messages:view'],
             ['name' => 'messages:send'],
 
-            ['name' => 'notifications:view'],
-            ['name' => 'notifications:send'],
-            ['name' => 'notifications:update'],
-            ['name' => 'notifications:delete'],
+            ['name' => 'news:view'],
+            ['name' => 'news:add'],
+            ['name' => 'news:update'],
+            ['name' => 'news:media'],
+            ['name' => 'news:delete'],
+
+            ['name' => 'category:view'],
+            ['name' => 'category:add'],
+            ['name' => 'category:update'],
+            ['name' => 'category:delete'],
+
+            ['name' => 'information:view'],
+            ['name' => 'information:add'],
+            ['name' => 'information:update'],
+            ['name' => 'information:delete'],
+
+            ['name' => 'boards:view'],
+            ['name' => 'boards:add'],
+            ['name' => 'boards:update'],
+            ['name' => 'boards:delete'],
 
             ['name' => 'users:view'],
             ['name' => 'users:add'],
@@ -41,6 +57,7 @@ class PermissionSeeder extends Seeder
             ['name' => 'settings:update'],
 
             ['name' => 'user-type:admin'],
+            ['name' => 'admin:access'],
         ]);
 
         $admin->givePermissionTo(Permission::all());

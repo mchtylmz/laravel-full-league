@@ -19,7 +19,9 @@ class DatabaseSeeder extends Seeder
             SettingSeeder::class,
             PermissionSeeder::class,
             UserSeeder::class,
-            BlogSeeder::class,
+            SeasonSeeder::class,
+            NewsSeeder::class,
+            InformationTypeSeeder::class
         ]);
     }
 }

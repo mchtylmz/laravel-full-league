@@ -3,8 +3,8 @@
             'offcanvas fade bg-body-extra-light',
             'show' => $show == true,
             'offcanvas-top h-50' => $position == 'top',
-            'offcanvas-start w-75' => $position == 'left',
-            'offcanvas-end w-75' => $position == 'right',
+            'offcanvas-start w-50' => $position == 'left',
+            'offcanvas-end w-50' => $position == 'right',
             'offcanvas-bottom h-50' => $position == 'bottom',
             ])
          tabindex="-1"

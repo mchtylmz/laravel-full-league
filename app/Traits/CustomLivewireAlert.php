@@ -10,9 +10,9 @@ trait CustomLivewireAlert
 
     public array $alertOptions = [
         'text' => '',
-        'position' => 'center',
+        'position' => 'top-end',
         'timer' => 3000,
-        'toast' => false,
+        'toast' => true,
         'timerProgressBar' => true,
         'showCloseButton' => true,
     ];
@@ -24,7 +24,7 @@ trait CustomLivewireAlert
         return $this;
     }
 
-    public function toast(bool $toast = false, string $position = 'top-end'): static
+    public function toast(bool $toast = true, string $position = 'top-end'): static
     {
         $this->alertOptions['toast'] = $toast;
         $this->alertOptions['position'] = $position;
